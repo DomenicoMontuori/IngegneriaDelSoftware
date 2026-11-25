@@ -65,6 +65,8 @@ Il sistema è un'applicazione desktop dotata di un'interfaccia grafica che non p
 
 \rowcolor{gray!10}Archivio & Insieme persistente di aule, docenti e prenotazioni. \\
 \rowcolor{white}Aula & Luogo fisico soggetto alla prenotazione. \\
+\rowcolor{gray!10}Aula Libera & Aula non soggetta a prenotazione \\
+\rowcolor{white}Campo o Criterio non valido & Il dato inserito non è logicamente sensato \\
 \rowcolor{gray!10}Conflitto & Sovrapposizione temporale con un'altra prenotazione della stessa aula o dello stesso docente. \\
 \rowcolor{white}Docente & Colui che richiede la prenotazione. Identificato dall'insieme di dati: email univoca, nome e cognome. \\
 \rowcolor{gray!10}Fascia oraria & Intervallo di tempo compreso tra una data e ora di inizio e una data e ora di fine. \\
@@ -85,7 +87,7 @@ Il sistema è un'applicazione desktop dotata di un'interfaccia grafica che non p
 
 \noindent\textbf{Flusso di eventi:}
 \begin{enumerate}
-\item L'operatore sceglie 'nuova aula'.\item Il sistema mostra il form di creazione.\item L'operatore inserisce il codice univoco, nome, edificio, piano e capienza.\item L'operatore invia il form.\item Il sistema convalida i dati.\item Il sistema crea l'aula.\item Il sistema salva l'archivio.\item Il sistema mostra la lista aggiornata.\end{enumerate}
+\item L'operatore sceglie 'nuova aula'. \item Il sistema mostra il form di creazione. \item L'operatore inserisce il codice univoco, nome, edificio, piano e capienza. \item L'operatore invia il form. \item Il sistema convalida i dati. \item Il sistema crea l'aula. \item Il sistema salva l'archivio. \item Il sistema mostra la lista aggiornata. \end{enumerate}
 \noindent\textbf{Flussi alternativi:}
 \begin{itemize}
 \item[4a.] L'operatore annulla l'operazione
@@ -116,18 +118,23 @@ Il sistema è un'applicazione desktop dotata di un'interfaccia grafica che non p
 
 \noindent\textbf{Flusso di eventi:}
 \begin{enumerate}
-\item L'Operatore seleziona un'aula dalla lista e sceglie 'Modifica'\item Il sistema mostra i dati correnti\item L'Operatore modifica uno o più campi.\item L'Operatore conferma.\item Il sistema convalida i nuovi campi.\item Il sistema aggiorna l'archivio.\item Il sistema mostra la lista aggiornata.\end{enumerate}
+\item L'Operatore seleziona un'aula dalla lista \item L'Operatore seleziona l'opzione 'Modifica' \item Il sistema mostra i dati correnti \item L'Operatore modifica uno o più campi. \item L'Operatore conferma. \item Il sistema convalida i nuovi campi. \item Il sistema aggiorna l'archivio. \item Il sistema mostra la lista aggiornata. \end{enumerate}
 \noindent\textbf{Flussi alternativi:}
 \begin{itemize}
-\item[4a.] L'Operatore annulla l'operazione
+\item[5a.] L'Operatore annulla l'operazione
 \begin{itemize}
 \item Nessuna modifica effettuata all'archivio
 \item L'esecuzione riprende dal passo 1
 \end{itemize}
-\item[5a.] Uno dei campi è mancante o non valido
+\item[6a.] Uno dei campi è mancante o non valido
 \begin{itemize}
 \item Il sistema segnala l'errore e non salva l'operazione
-\item L'esecuzione riprende dal passo 2
+\item L'esecuzione riprende dal passo 4
+\end{itemize}
+\item[6b.] Tutti i campi rimangono immutati
+\begin{itemize}
+\item Il sistema non aggiorna i dati.
+\item L'esecuzione riprende dal passo 4
 \end{itemize}
 \end{itemize}
 \noindent\textbf{Postcondizioni:} I dati dell'aula sono aggiornati\par
@@ -142,12 +149,27 @@ Il sistema è un'applicazione desktop dotata di un'interfaccia grafica che non p
 
 \noindent\textbf{Flusso di eventi:}
 \begin{enumerate}
-\item L'Operatore seleziona un'aula e sceglie 'Cancella'\item Il sistema chiede conferma\item L'operatore conferma\item Il sistema elimina l'aula\item Il sistema salva\item Il sistema mostra la lista aggiornata\end{enumerate}
+\item L'Operatore seleziona un'aula \item L'Operatore seleziona l'opzione 'Cancella' \item Il sistema chiede conferma \item L'operatore conferma \item Il sistema verifica l'esistenza di prenotazioni associate. Se non ne trova prosegue. \item Il sistema elimina l'aula \item Il sistema salva \item Il sistema mostra la lista aggiornata \end{enumerate}
 \noindent\textbf{Flussi alternativi:}
 \begin{itemize}
-\item[3a.] L'operatore annulla l'operazione
+\item[4a.] L'operatore annulla l'operazione
 \begin{itemize}
 \item Nessuna modifica effettuata all'archivio
+\item L'esecuzione riprende dal passo 1
+\end{itemize}
+\item[5a.] Il sistema trova prenotazioni associate
+\begin{itemize}
+\item Il sistema visualizza le prenotazioni.
+\item Il sistema chiede conferma.
+\item L'operatore conferma
+\item Il sistema elimina le prenotazioni associate all'aula.
+\item L'esecuzione riprende dal passo 6
+\end{itemize}
+\item[5b.] Il sistema trova prenotazioni associate
+\begin{itemize}
+\item Il sistema visualizza le prenotazioni.
+\item Il sistema chiede conferma.
+\item L'operatore annulla
 \item L'esecuzione riprende dal passo 1
 \end{itemize}
 \end{itemize}
@@ -163,7 +185,7 @@ Il sistema è un'applicazione desktop dotata di un'interfaccia grafica che non p
 
 \noindent\textbf{Flusso di eventi:}
 \begin{enumerate}
-\item L'Operatore apre la sezione Aule\item Il sistema mostra tutte le aule con codice, nome, edificio, piano e capienza\end{enumerate}
+\item L'Operatore apre la sezione Aule \item Il sistema mostra tutte le aule con codice, nome, edificio, piano e capienza \end{enumerate}
 \noindent\textbf{Flussi alternativi:}
 \begin{itemize}
 \item[2a.] Nessuna aula è presente nell'archivio
@@ -171,7 +193,7 @@ Il sistema è un'applicazione desktop dotata di un'interfaccia grafica che non p
 \item Il sistema mostra un messaggio di notifica.
 \end{itemize}
 \end{itemize}
-\noindent\textbf{Postcondizioni:} Nessuna modifica ai dati effettuata\par
+\noindent\textbf{Postcondizioni:} Nessuna modifica ai dati effettuata. Il sitema mostra la lista delle aule.\par
 \end{ucbox}
 \end{samepage}
 \begin{samepage}
@@ -183,7 +205,7 @@ Il sistema è un'applicazione desktop dotata di un'interfaccia grafica che non p
 
 \noindent\textbf{Flusso di eventi:}
 \begin{enumerate}
-\item L'Operatore inserisce uno o più criteri di ricerca\item Il sistema mostra le aule che soddisfano tutti i criteri inseriti\end{enumerate}
+\item L'Operatore inserisce uno o più criteri di ricerca \item Il sistema mostra le aule che soddisfano tutti i criteri inseriti \end{enumerate}
 \noindent\textbf{Flussi alternativi:}
 \begin{itemize}
 \item[1a.] Nessun criterio
@@ -199,7 +221,7 @@ Il sistema è un'applicazione desktop dotata di un'interfaccia grafica che non p
 \item Messaggio di errore 'nessuna aula trovata'
 \end{itemize}
 \end{itemize}
-\noindent\textbf{Postcondizioni:} Nessuna modifica ai dati effettuata\par
+\noindent\textbf{Postcondizioni:} Nessuna modifica ai dati effettuata. Il sistema mostra l'elenco delle aule filtrato secondo i criteri di ricerca.\par
 \end{ucbox}
 \end{samepage}
 \subsection*{2. Gestione docente}
@@ -212,7 +234,7 @@ Il sistema è un'applicazione desktop dotata di un'interfaccia grafica che non p
 
 \noindent\textbf{Flusso di eventi:}
 \begin{enumerate}
-\item L'operatore sceglie 'nuovo docente'.\item Il sistema mostra il form di creazione.\item L'operatore inserisce l'email istituzionale univoca, nome e cognome.\item L'operatore invia il form.\item Il sistema convalida i dati.\item Il sistema crea il docente.\item Il sistema salva l'archivio.\item Il sistema mostra la lista aggiornata.\end{enumerate}
+\item L'operatore sceglie 'nuovo docente'. \item Il sistema mostra il form di creazione. \item L'operatore inserisce l'email istituzionale univoca, nome e cognome. \item L'operatore invia il form. \item Il sistema convalida i dati. \item Il sistema crea il docente. \item Il sistema salva l'archivio. \item Il sistema mostra la lista aggiornata. \end{enumerate}
 \noindent\textbf{Flussi alternativi:}
 \begin{itemize}
 \item[4a.] L'operatore annulla l'operazione
@@ -243,18 +265,23 @@ Il sistema è un'applicazione desktop dotata di un'interfaccia grafica che non p
 
 \noindent\textbf{Flusso di eventi:}
 \begin{enumerate}
-\item L'Operatore seleziona un docente dalla lista e sceglie 'Modifica'\item Il sistema mostra i dati correnti\item L'Operatore modifica uno o più campi.\item L'Operatore conferma.\item Il sistema convalida i nuovi campi.\item Il sistema aggiorna l'archivio.\item Il sistema mostra la lista aggiornata.\end{enumerate}
+\item L'Operatore seleziona un docente dalla lista \item L'Operatore seleziona l'opzione 'Modifica' \item Il sistema mostra i dati correnti \item L'Operatore modifica uno o più campi. \item L'Operatore conferma. \item Il sistema convalida i nuovi campi. \item Il sistema aggiorna l'archivio. \item Il sistema mostra la lista aggiornata. \end{enumerate}
 \noindent\textbf{Flussi alternativi:}
 \begin{itemize}
-\item[4a.] L'Operatore annulla l'operazione
+\item[5a.] L'Operatore annulla l'operazione
 \begin{itemize}
 \item Nessuna modifica effettuata all'archivio
 \item L'esecuzione riprende dal passo 1
 \end{itemize}
-\item[5a.] Uno dei campi è mancante o non valido
+\item[6a.] Uno dei campi è mancante o non valido
 \begin{itemize}
 \item Il sistema segnala l'errore e non salva l'operazione
-\item L'esecuzione riprende dal passo 3
+\item L'esecuzione riprende dal passo 4
+\end{itemize}
+\item[6b.] Tutti i campi rimangono immutati
+\begin{itemize}
+\item Il sistema non aggiorna i dati.
+\item L'esecuzione riprende dal passo 4
 \end{itemize}
 \end{itemize}
 \noindent\textbf{Postcondizioni:} I dati del docente sono aggiornati\par
@@ -269,12 +296,27 @@ Il sistema è un'applicazione desktop dotata di un'interfaccia grafica che non p
 
 \noindent\textbf{Flusso di eventi:}
 \begin{enumerate}
-\item L'Operatore seleziona un docente e sceglie 'Cancella'\item Il sistema chiede conferma\item L'operatore conferma\item Il sistema elimina il docente\item Il sistema salva\item Il sistema mostra la lista aggiornata\end{enumerate}
+\item L'Operatore seleziona un docente. \item L'Operatore seleziona l'opzione 'Cancella'. \item Il sistema chiede conferma \item L'operatore conferma \item Il sistema verifica l'esistenza di prenotazioni associate. Se non ne trova prosegue. \item Il sistema elimina il docente \item Il sistema salva \item Il sistema mostra la lista aggiornata \end{enumerate}
 \noindent\textbf{Flussi alternativi:}
 \begin{itemize}
-\item[3a.] L'operatore annulla l'operazione
+\item[4a.] L'operatore annulla l'operazione
 \begin{itemize}
 \item Nessuna modifica effettuata all'archivio
+\item L'esecuzione riprende dal passo 1
+\end{itemize}
+\item[5a.] Il sistema trova prenotazioni associate
+\begin{itemize}
+\item Il sistema visualizza le prenotazioni.
+\item Il sistema chiede conferma.
+\item L'operatore conferma
+\item Il sistema elimina le prenotazioni associate al docente.
+\item L'esecuzione riprende dal passo 6
+\end{itemize}
+\item[5b.] Il sistema trova prenotazioni associate
+\begin{itemize}
+\item Il sistema visualizza le prenotazioni.
+\item Il sistema chiede conferma.
+\item L'operatore annulla
 \item L'esecuzione riprende dal passo 1
 \end{itemize}
 \end{itemize}
@@ -290,7 +332,7 @@ Il sistema è un'applicazione desktop dotata di un'interfaccia grafica che non p
 
 \noindent\textbf{Flusso di eventi:}
 \begin{enumerate}
-\item L'Operatore apre la sezione Docenti\item Il sistema mostra tutti i docenti con email istituzionale, cognome e nome.\end{enumerate}
+\item L'Operatore apre la sezione Docenti \item Il sistema mostra tutti i docenti con email istituzionale, cognome e nome. \end{enumerate}
 \noindent\textbf{Flussi alternativi:}
 \begin{itemize}
 \item[2a.] Nessun docente è presente nell'archivio
@@ -298,7 +340,7 @@ Il sistema è un'applicazione desktop dotata di un'interfaccia grafica che non p
 \item Il sistema mostra un messaggio di notifica.
 \end{itemize}
 \end{itemize}
-\noindent\textbf{Postcondizioni:} Nessuna modifica ai dati effettuata\par
+\noindent\textbf{Postcondizioni:} Nessuna modifica ai dati effettuata. Il sitema mostra la lista dei docenti.\par
 \end{ucbox}
 \end{samepage}
 \begin{samepage}
@@ -310,7 +352,7 @@ Il sistema è un'applicazione desktop dotata di un'interfaccia grafica che non p
 
 \noindent\textbf{Flusso di eventi:}
 \begin{enumerate}
-\item L'Operatore inserisce uno o più criteri di ricerca\item Il sistema mostra i docenti che soddisfano tutti i criteri inseriti\end{enumerate}
+\item L'Operatore inserisce uno o più criteri di ricerca \item Il sistema mostra i docenti che soddisfano tutti i criteri inseriti \end{enumerate}
 \noindent\textbf{Flussi alternativi:}
 \begin{itemize}
 \item[1a.] Nessun criterio
@@ -327,7 +369,7 @@ Il sistema è un'applicazione desktop dotata di un'interfaccia grafica che non p
 \item Messaggio di errore 'nessun docente trovato'
 \end{itemize}
 \end{itemize}
-\noindent\textbf{Postcondizioni:} Nessuna modifica ai dati effettuata\par
+\noindent\textbf{Postcondizioni:} Nessuna modifica ai dati effettuata. Il sistema mostra l'elenco dei docenti filtrato secondo i criteri di ricerca.\par
 \end{ucbox}
 \end{samepage}
 \subsection*{3. Gestione prenotazioni}
@@ -340,10 +382,10 @@ Il sistema è un'applicazione desktop dotata di un'interfaccia grafica che non p
 
 \noindent\textbf{Flusso di eventi:}
 \begin{enumerate}
-\item L'operatore inserisce i criteri di ricerca quali data, ora di inizio e ora di fine e/o capienza.\item Il sistema calcola le aule non occupate in quell'intervallo\item Il sistema mostra l'elenco delle aule libere\end{enumerate}
+\item L'operatore inserisce i criteri di ricerca quali data, ora di inizio e ora di fine e/o capienza. \item Il sistema calcola le aule libere secondo i criteri inseriti. \item Il sistema mostra l'elenco delle aule libere \end{enumerate}
 \noindent\textbf{Flussi alternativi:}
 \begin{itemize}
-\item[1a.] Campi non validi (es. Ora di fine precedente all'ora di inizio, capienza negativa)
+\item[1a.] Criteri non validi
 \begin{itemize}
 \item Visualizza un messaggio di errore
 \item L'esecuzione riprende dal passo 1
@@ -353,7 +395,7 @@ Il sistema è un'applicazione desktop dotata di un'interfaccia grafica che non p
 \item Visualizza un messaggio di errore
 \end{itemize}
 \end{itemize}
-\noindent\textbf{Postcondizioni:} Nessuna\par
+\noindent\textbf{Postcondizioni:} Il sistema mostra l'elenco delle aule libere\par
 \end{ucbox}
 \end{samepage}
 \begin{samepage}
@@ -361,14 +403,14 @@ Il sistema è un'applicazione desktop dotata di un'interfaccia grafica che non p
 \begin{ucbox}
 
 \noindent\textbf{Attore:} Operatore\par
-\noindent\textbf{Precondizioni:} L'archivio è stato caricato. Esistono almeno un'aula e un docente.\par
+\noindent\textbf{Precondizioni:} L'archivio è stato caricato. Esistono almeno un'aula e un docente. \par
 
 \noindent\textbf{Flusso di eventi:}
 \begin{enumerate}
-\item L'Operatore sceglie 'Nuova prenotazione'\item Il sistema mostra il form\item Compila il form inserendo data e ora di inizio e fine attività, selezionando un'aula, selezionando il docente responsabile, inserendo tipo di attività e denominazione.\item Il sistema convalida i dati e verifica le sovrapposizioni\item Se non ci sono conflitti, il sistema crea la prenotazione e salva\end{enumerate}
+\item L'Operatore sceglie 'Nuova prenotazione' \item Il sistema mostra il form. \item L'operatore compila il form inserendo data e ora di inizio e fine attività, tipo di attività e denominazione, l'aula e il docente responsabile. \item Il sistema convalida i dati e verifica le sovrapposizioni \item Se non ci sono conflitti, il sistema crea la prenotazione e salva \end{enumerate}
 \noindent\textbf{Flussi alternativi:}
 \begin{itemize}
-\item[3a.] Campi inseriti non validi (es. Ora di fine precedente all'ora di inizio, capienza negativa)
+\item[3a.] Campi inseriti non validi
 \begin{itemize}
 \item Visualizza un messaggio di errore
 \item Non crea alcuna prenotazione
@@ -385,7 +427,7 @@ Il sistema è un'applicazione desktop dotata di un'interfaccia grafica che non p
 \item L'esecuzione riprende dal passo 2
 \end{itemize}
 \end{itemize}
-\noindent\textbf{Postcondizioni:} Nessuna\par
+\noindent\textbf{Postcondizioni:} La prenotazione singola è stata creata.\par
 \end{ucbox}
 \end{samepage}
 \begin{samepage}
@@ -393,31 +435,26 @@ Il sistema è un'applicazione desktop dotata di un'interfaccia grafica che non p
 \begin{ucbox}
 
 \noindent\textbf{Attore:} Operatore\par
-\noindent\textbf{Precondizioni:} L'archivio è stato caricato. Esistono almeno un'aula e un docente.\par
+\noindent\textbf{Precondizioni:} L'archivio è stato caricato. Esistono almeno un'aula e un docente. L'operatore seleziona 'prenotazione ricorrente' in UC12\par
 
 \noindent\textbf{Flusso di eventi:}
 \begin{enumerate}
-\item L'operatore seleziona 'prenotazione ricorrente'.\item L'operatore indica la data di termine\item Il sistema genera le occorrenze: stesso giorno della settimana e stessa fascia oraria, dalla data di inizio alla data di termine inclusa.\item Il sistema verifica le sovrapposizioni per ogni occorrenza\item Se nessuna occorrenza è in conflitto il sistema crea l'intera serie e salva\end{enumerate}
+\item L'operatore indica la data di termine \item Il sistema genera le occorrenze: stesso giorno della settimana e stessa fascia oraria, dalla data di inizio alla data di termine inclusa. \item Il sistema verifica le sovrapposizioni per ogni occorrenza \item Se nessuna occorrenza è in conflitto il sistema crea l'intera serie e salva \end{enumerate}
 \noindent\textbf{Flussi alternativi:}
 \begin{itemize}
-\item[1a.] Campi inseriti non validi
+\item[1a.] Campi inseriti non validi in UC12 o UC13
 \begin{itemize}
 \item Visualizza un messaggio di errore
-\item L'esecuzione riprende dal passo 1
+\item [Errore: uuid non trovato]
 \end{itemize}
-\item[2a.] Data di termine precedente alla data di inizio
-\begin{itemize}
-\item Visualizza un messaggio di errore
-\item L'esecuzione riprende dal passo 1
-\end{itemize}
-\item[4a.] Il sistema rileva delle sovrapposizioni
+\item[3a.] Il sistema rileva delle sovrapposizioni
 \begin{itemize}
 \item Visualizza un messaggio di errore elencando le date in conflitto
 \item Non effettua la creazione della serie di eventi
-\item L'esecuzione riprende dal passo 1
+\item [Errore: uuid non trovato]
 \end{itemize}
 \end{itemize}
-\noindent\textbf{Postcondizioni:} Nessuna\par
+\noindent\textbf{Postcondizioni:} La prenotazione ricorrente è stata creata.\par
 \end{ucbox}
 \end{samepage}
 \begin{samepage}
@@ -429,7 +466,7 @@ Il sistema è un'applicazione desktop dotata di un'interfaccia grafica che non p
 
 \noindent\textbf{Flusso di eventi:}
 \begin{enumerate}
-\item L'operatore apre la sezione 'Prenotazioni'\item Il sistema mostra le prenotazioni ordinate per data e ora\item L'operatore può filtrare per aula e per docente\item Il sistema aggiorna la lista\end{enumerate}
+\item L'operatore apre la sezione 'Prenotazioni' \item Il sistema mostra le prenotazioni ordinate per data e ora \item L'operatore può filtrare per aula e per docente \item Il sistema aggiorna la lista \end{enumerate}
 \noindent\textbf{Flussi alternativi:}
 \begin{itemize}
 \item[3a.] La visualizzazione filtrata non trova alcuna corrispondenza
@@ -437,7 +474,7 @@ Il sistema è un'applicazione desktop dotata di un'interfaccia grafica che non p
 \item Visualizza un messaggio di errore
 \end{itemize}
 \end{itemize}
-\noindent\textbf{Postcondizioni:} Nessuna modifica effettuata\par
+\noindent\textbf{Postcondizioni:} l sitema mostra la lista delle prenotazioni.\par
 \end{ucbox}
 \end{samepage}
 \begin{samepage}
@@ -449,22 +486,22 @@ Il sistema è un'applicazione desktop dotata di un'interfaccia grafica che non p
 
 \noindent\textbf{Flusso di eventi:}
 \begin{enumerate}
-\item L'operatore seleziona una prenotazione e sceglie 'Cancella'(\textbf{UC14})\item Il sistema chiede conferma\item L'operatore conferma\item Il sistema elimina solo quella occorrenza e salva.\end{enumerate}
+\item L'Operatore seleziona una prenotazione (\textbf{UC14})\item L'Operatore seleziona l'opzione 'Cancella' \item Il sistema chiede conferma \item L'operatore conferma \item Il sistema elimina solo quella occorrenza e salva. \end{enumerate}
 \noindent\textbf{Flussi alternativi:}
 \begin{itemize}
-\item[1a.] La prenotazione appartiene a una serie
+\item[2a.] La prenotazione appartiene a una serie
 \begin{itemize}
 \item Il sistema mostra la scelta 'elimina prenotazione singola' o 'elimina serie'
 \item L'operatore sceglie 'elimina prenotazione singola'
-\item L'esecuzione riprende dal passo 2
+\item L'esecuzione riprende dal passo 3
 \end{itemize}
-\item[1b.] La prenotazione appartiene a una serie
+\item[2b.] La prenotazione appartiene a una serie
 \begin{itemize}
 \item Il sistema mostra la scelta 'elimina prenotazione singola' o 'elimina serie'
 \item L'operatore sceglie 'elimina serie'
-\item L'esecuzione riprende dal passo UC20.2
+\item L'esecuzione riprende dal passo UC20.4
 \end{itemize}
-\item[3a.] L'operatore annulla
+\item[4a.] L'operatore annulla
 \begin{itemize}
 \item L'esecuzione riprende dal passo 1
 \end{itemize}
@@ -481,19 +518,19 @@ Il sistema è un'applicazione desktop dotata di un'interfaccia grafica che non p
 
 \noindent\textbf{Flusso di eventi:}
 \begin{enumerate}
-\item L'operatore seleziona una prenotazione singola e sceglie 'Modifica'(\textbf{UC14})\item Il sistema mostra i dati correnti\item L'operatore modifica i campi\item L'operatore conferma\item Il sistema verifica la validità dei dati inseriti\item Il sistema aggiorna i dati\end{enumerate}
+\item L'operatore seleziona una prenotazione singola (\textbf{UC14})\item L'Operatore seleziona l'opzione 'Modifica' \item Il sistema mostra i dati correnti \item L'operatore modifica i campi \item L'operatore conferma \item Il sistema verifica la validità dei dati inseriti \item Il sistema aggiorna i dati \end{enumerate}
 \noindent\textbf{Flussi alternativi:}
 \begin{itemize}
-\item[3a.] L'operatore modifica la prenotazione da singola a ricorrente
+\item[4a.] L'operatore modifica la prenotazione da singola a ricorrente
 \begin{itemize}
 \item L'esecuzione riprende da UC17
 \end{itemize}
-\item[4a.] L'operatore annulla
+\item[5a.] L'operatore annulla
 \begin{itemize}
 \item L'esecuzione riprende dal passo 1
 \end{itemize}
 \end{itemize}
-\noindent\textbf{Postcondizioni:} Nessuna\par
+\noindent\textbf{Postcondizioni:} La prenotazione è stata modificata\par
 \end{ucbox}
 \end{samepage}
 \begin{samepage}
@@ -501,11 +538,11 @@ Il sistema è un'applicazione desktop dotata di un'interfaccia grafica che non p
 \begin{ucbox}
 
 \noindent\textbf{Attore:} Operatore\par
-\noindent\textbf{Precondizioni:} L'archivio è stato caricato. Esiste almeno una prenotazione singola. L'operatore sta modificando una prenotazione singola.\par
+\noindent\textbf{Precondizioni:} L'archivio è stato caricato. Esiste almeno una prenotazione singola. L'operatore sta modificando una prenotazione singola in UC16.\par
 
 \noindent\textbf{Flusso di eventi:}
 \begin{enumerate}
-\item L'operatore seleziona 'prenotazione ricorrente'.\item L'operatore indica la data di termine\item Il sistema genera le occorrenze: stesso giorno della settimana e stessa fascia oraria, dalla data di inizio alla data di termine inclusa.\item Il sistema verifica le sovrapposizioni per ogni occorrenza\item Se nessuna occorrenza è in conflitto il sistema crea l'intera serie e salva\end{enumerate}
+\item L'operatore seleziona 'prenotazione ricorrente'. \item L'operatore indica la data di termine \item Il sistema genera le occorrenze: stesso giorno della settimana e stessa fascia oraria, dalla data di inizio alla data di termine inclusa. \item Il sistema verifica le sovrapposizioni per ogni occorrenza \item Se nessuna occorrenza è in conflitto il sistema crea l'intera serie e salva \end{enumerate}
 \noindent\textbf{Flussi alternativi:}
 \begin{itemize}
 \item[1a.] Campi inseriti non validi
@@ -515,7 +552,7 @@ Il sistema è un'applicazione desktop dotata di un'interfaccia grafica che non p
 \end{itemize}
 \item[1b.] L'operatore deseleziona 'prenotazione ricorrente'
 \begin{itemize}
-\item Nessuna modifica effettuata da questo caso d'uso.
+\item Nessuna modifica effettuata da UC17
 \item L'esecuzione riprende da UC16
 \end{itemize}
 \item[2a.] Data di termine precedente alla data di inizio
@@ -530,7 +567,7 @@ Il sistema è un'applicazione desktop dotata di un'interfaccia grafica che non p
 \item L'esecuzione riprende dal passo 1
 \end{itemize}
 \end{itemize}
-\noindent\textbf{Postcondizioni:} Nessuna\par
+\noindent\textbf{Postcondizioni:} Modificata la prenotazione da singola a ricorrente.\par
 \end{ucbox}
 \end{samepage}
 \begin{samepage}
@@ -542,25 +579,25 @@ Il sistema è un'applicazione desktop dotata di un'interfaccia grafica che non p
 
 \noindent\textbf{Flusso di eventi:}
 \begin{enumerate}
-\item L'operatore seleziona una prenotazione ricorrente e sceglie 'Modifica'(\textbf{UC14})\item Il sistema mostra i dati correnti\item L'operatore modifica i campi\item L'operatore conferma\item Il sistema verifica la validità dei dati inseriti\item Il sistema aggiorna i dati\end{enumerate}
+\item L'operatore seleziona una prenotazione ricorrente (\textbf{UC14})\item L'Operatore seleziona l'opzione 'Modifica' \item Il sistema mostra i dati correnti \item L'operatore modifica i campi \item L'operatore conferma \item Il sistema verifica la validità dei dati inseriti \item Il sistema aggiorna i dati \end{enumerate}
 \noindent\textbf{Flussi alternativi:}
 \begin{itemize}
-\item[3a.] L'operatore modifica la prenotazione da ricorrente a singola
+\item[4a.] L'operatore modifica la prenotazione da ricorrente a singola
 \begin{itemize}
 \item L'esecuzione riprende da UC19
 \end{itemize}
-\item[4a.] L'operatore annulla
+\item[5a.] L'operatore annulla
 \begin{itemize}
 \item L'esecuzione riprende dal passo 1
 \end{itemize}
-\item[5a.] L'operatore ha modificato la data di termine anticipandola
+\item[6a.] L'operatore ha modificato la data di termine anticipandola
 \begin{itemize}
 \item Il sistema verifica se ci sono prenotazioni da rimuovere
 \item Il sistema avvisa e chiede conferma
 \item Se l'operatore conferma si procede con l'eliminazione delle prenotazioni e l'esecuzione riprende dal passo 6.
 \item Se l'operatore annulla l'esecuzione riprende dal passo 3.
 \end{itemize}
-\item[5b.] L'operatore ha modificato la data di termine posticipandola
+\item[6b.] L'operatore ha modificato la data di termine posticipandola
 \begin{itemize}
 \item Il sistema verifica se è possibile effettuare le nuove prenotazioni
 \item Se possibile, il sistema avvisa e chiede conferma: se l'operatore conferma si procede con la creazione degli eventi, se annulla l'esecuzione riprende dal passo 3.
@@ -579,7 +616,7 @@ Il sistema è un'applicazione desktop dotata di un'interfaccia grafica che non p
 
 \noindent\textbf{Flusso di eventi:}
 \begin{enumerate}
-\item L'operatore deseleziona 'prenotazione ricorrente'.\item Il sistema verifica se esistono prenotazioni successive, in tal caso le mostra e avvisa che saranno eliminate.\item L'operatore conferma.\item Il sistema verifica la correttezza dei dati\item Il sistema elimina le occorrenze con data non uguale alla data dell'occorrenza modificata.\item Il sistema aggiorna i dati.\end{enumerate}
+\item L'operatore deseleziona 'prenotazione ricorrente'. \item Il sistema verifica se esistono prenotazioni successive, in tal caso le mostra e avvisa che saranno eliminate. \item L'operatore conferma. \item Il sistema verifica la correttezza dei dati \item Il sistema elimina le occorrenze con data non uguale alla data dell'occorrenza modificata. \item Il sistema aggiorna i dati. \end{enumerate}
 \noindent\textbf{Flussi alternativi:}
 \begin{itemize}
 \item[1a.] Campi inseriti non validi
@@ -609,15 +646,15 @@ Il sistema è un'applicazione desktop dotata di un'interfaccia grafica che non p
 
 \noindent\textbf{Flusso di eventi:}
 \begin{enumerate}
-\item L'operatore seleziona una prenotazione della serie e sceglie 'Cancella' e poi 'elimina serie'.\item Il sistema mostra le occorrenze che saranno eliminate.\item Il sistema chiede conferma.\item L'operatore conferma.\item Il sistema elimina le occorrenze con data successiva o uguale alla data dell'occorrenza eliminata\item Il sistema aggiorna i dati.\end{enumerate}
+\item L'operatore seleziona una prenotazione della serie. (\textbf{UC14})\item L'Operatore seleziona l'opzione 'Cancella'. \item L'Operatore seleziona 'elimina serie'. \item Il sistema mostra le occorrenze che saranno eliminate. \item Il sistema chiede conferma. \item L'operatore conferma. \item Il sistema elimina le occorrenze con data successiva o uguale alla data dell'occorrenza eliminata \item Il sistema aggiorna i dati. \end{enumerate}
 \noindent\textbf{Flussi alternativi:}
 \begin{itemize}
-\item[2a.] Non ci sono occorrenze future
+\item[4a.] Non ci sono occorrenze future
 \begin{itemize}
 \item Visualizza un messaggio
-\item L'esecuzione riprende dal passo 3
+\item L'esecuzione riprende dal passo 5
 \end{itemize}
-\item[4a.] L'operatore annulla
+\item[6a.] L'operatore annulla
 \begin{itemize}
 \item L'esecuzione riprende dal passo 1
 \end{itemize}
@@ -749,26 +786,26 @@ BF-4 & Modifica di una prenotazione & SHOULD-HAVE \\
 \bottomrule
 \endlastfoot
 
-\rowcolor{gray!10}\mbox{UC01} & \mbox{ED-21}, \mbox{UI-23}, \mbox{FI-01}, \mbox{ED-20} & \mbox{NF-04}, \mbox{NF-01} & & & \\
-\rowcolor{white}\mbox{UC02} & \mbox{ED-21}, \mbox{UI-23}, \mbox{FI-02} & \mbox{NF-04}, \mbox{NF-01} & & & \\
+\rowcolor{gray!10}\mbox{UC01} & \mbox{ED-21}, \mbox{ED-20}, \mbox{FI-01}, \mbox{UI-23} & \mbox{NF-01}, \mbox{NF-04} & & & \\
+\rowcolor{white}\mbox{UC02} & \mbox{FI-02}, \mbox{ED-21}, \mbox{UI-23} & \mbox{NF-01}, \mbox{NF-04} & & & \\
 \rowcolor{gray!10}\mbox{UC03} & \mbox{UI-22}, \mbox{FI-03} & \mbox{NF-01} & & & \\
-\rowcolor{white}\mbox{UC04} & \mbox{FI-04}, \mbox{UI-23} & \mbox{NF-04}, \mbox{NF-01} & & & \\
-\rowcolor{gray!10}\mbox{UC05} & \mbox{FI-05}, \mbox{UI-23} & \mbox{NF-04}, \mbox{NF-01} & & & \\
-\rowcolor{white}\mbox{UC06} & \mbox{ED-21}, \mbox{FI-06}, \mbox{UI-23}, \mbox{ED-20} & \mbox{NF-04}, \mbox{NF-01} & & & \\
-\rowcolor{gray!10}\mbox{UC07} & \mbox{ED-21}, \mbox{UI-23}, \mbox{FI-07} & \mbox{NF-04}, \mbox{NF-01} & & & \\
+\rowcolor{white}\mbox{UC04} & \mbox{FI-04}, \mbox{UI-23} & \mbox{NF-01}, \mbox{NF-04} & & & \\
+\rowcolor{gray!10}\mbox{UC05} & \mbox{UI-23}, \mbox{FI-05} & \mbox{NF-01}, \mbox{NF-04} & & & \\
+\rowcolor{white}\mbox{UC06} & \mbox{ED-21}, \mbox{ED-20}, \mbox{UI-23}, \mbox{FI-06} & \mbox{NF-01}, \mbox{NF-04} & & & \\
+\rowcolor{gray!10}\mbox{UC07} & \mbox{ED-21}, \mbox{UI-23}, \mbox{FI-07} & \mbox{NF-01}, \mbox{NF-04} & & & \\
 \rowcolor{white}\mbox{UC08} & \mbox{UI-22}, \mbox{FI-08} & \mbox{NF-01} & & & \\
-\rowcolor{gray!10}\mbox{UC09} & \mbox{FI-09}, \mbox{UI-23} & \mbox{NF-04}, \mbox{NF-01} & & & \\
-\rowcolor{white}\mbox{UC10} & \mbox{FI-10}, \mbox{UI-23} & \mbox{NF-04}, \mbox{NF-01} & & & \\
-\rowcolor{gray!10}\mbox{UC11} & \mbox{FI-11}, \mbox{UI-23} & \mbox{NF-04}, \mbox{NF-01} & & & \\
-\rowcolor{white}\mbox{UC12} & \mbox{ED-21}, \mbox{FI-12}, \mbox{UI-23} & \mbox{NF-04}, \mbox{NF-01} & & & \\
-\rowcolor{gray!10}\mbox{UC13} & \mbox{FI-13}, \mbox{ED-21}, \mbox{UI-23} & \mbox{NF-04}, \mbox{NF-01} & & & \\
-\rowcolor{white}\mbox{UC14} & \mbox{FI-14}, \mbox{FI-15}, \mbox{UI-23} & \mbox{NF-04}, \mbox{NF-01} & & & \\
+\rowcolor{gray!10}\mbox{UC09} & \mbox{UI-23}, \mbox{FI-09} & \mbox{NF-01}, \mbox{NF-04} & & & \\
+\rowcolor{white}\mbox{UC10} & \mbox{UI-23}, \mbox{FI-10} & \mbox{NF-01}, \mbox{NF-04} & & & \\
+\rowcolor{gray!10}\mbox{UC11} & \mbox{FI-11}, \mbox{UI-23} & \mbox{NF-01}, \mbox{NF-04} & & & \\
+\rowcolor{white}\mbox{UC12} & \mbox{ED-21}, \mbox{UI-23}, \mbox{FI-12} & \mbox{NF-01}, \mbox{NF-04} & & & \\
+\rowcolor{gray!10}\mbox{UC13} & \mbox{ED-21}, \mbox{UI-23}, \mbox{FI-13} & \mbox{NF-01}, \mbox{NF-04} & & & \\
+\rowcolor{white}\mbox{UC14} & \mbox{UI-23}, \mbox{FI-14}, \mbox{FI-15} & \mbox{NF-01}, \mbox{NF-04} & & & \\
 \rowcolor{gray!10}\mbox{UC15} & \mbox{FI-16}, \mbox{UI-22}, \mbox{UI-23} & \mbox{NF-01} & & & \\
-\rowcolor{white}\mbox{UC16} & \mbox{FI-25} & \mbox{NF-04}, \mbox{NF-01} & & & \\
-\rowcolor{gray!10}\mbox{UC17} & \mbox{FI-25}, \mbox{FI-26} & \mbox{NF-04}, \mbox{NF-01} & & & \\
-\rowcolor{white}\mbox{UC18} & \mbox{FI-25} & \mbox{NF-04}, \mbox{NF-01} & & & \\
-\rowcolor{gray!10}\mbox{UC19} & \mbox{FI-25}, \mbox{UI-22}, \mbox{FI-27} & \mbox{NF-04}, \mbox{NF-01} & & & \\
-\rowcolor{white}\mbox{UC20} & \mbox{FI-17}, \mbox{UI-22}, \mbox{UI-23} & \mbox{NF-04}, \mbox{NF-01} & & & \\
+\rowcolor{white}\mbox{UC16} & \mbox{FI-25} & \mbox{NF-01}, \mbox{NF-04} & & & \\
+\rowcolor{gray!10}\mbox{UC17} & \mbox{FI-25}, \mbox{FI-26} & \mbox{NF-01}, \mbox{NF-04} & & & \\
+\rowcolor{white}\mbox{UC18} & \mbox{FI-25} & \mbox{NF-01}, \mbox{NF-04} & & & \\
+\rowcolor{gray!10}\mbox{UC19} & \mbox{FI-27}, \mbox{UI-22}, \mbox{FI-25} & \mbox{NF-01}, \mbox{NF-04} & & & \\
+\rowcolor{white}\mbox{UC20} & \mbox{UI-22}, \mbox{FI-17}, \mbox{UI-23} & \mbox{NF-01}, \mbox{NF-04} & & & \\
 \end{longtable}
 }
 

@@ -5,6 +5,8 @@ Il sistema è un'applicazione desktop dotata di un'interfaccia grafica che non p
 | ----------------------- | ----------------------------------------------------------------------------------------------------- |
 | Archivio | Insieme persistente di aule, docenti e prenotazioni. |
 | Aula | Luogo fisico soggetto alla prenotazione. |
+| Aula Libera | Aula non soggetta a prenotazione |
+| Campo o Criterio non valido | Il dato inserito non è logicamente sensato |
 | Conflitto | Sovrapposizione temporale con un'altra prenotazione della stessa aula o dello stesso docente. |
 | Docente | Colui che richiede la prenotazione. Identificato dall'insieme di dati: email univoca, nome e cognome. |
 | Fascia oraria | Intervallo di tempo compreso tra una data e ora di inizio e una data e ora di fine. |
@@ -45,37 +47,54 @@ Postcondizioni: Esiste una nuova aula<br />
 Attore: Operatore<br />
 Precondizioni: L'archivio è stato caricato. Esiste un'aula.<br />
 Flusso di eventi:<br />
-1. L'Operatore seleziona un'aula dalla lista e sceglie 'Modifica' 
-2. Il sistema mostra i dati correnti 
-3. L'Operatore modifica uno o più campi. 
-4. L'Operatore conferma. 
-5. Il sistema convalida i nuovi campi. 
-6. Il sistema aggiorna l'archivio. 
-7. Il sistema mostra la lista aggiornata. 
+1. L'Operatore seleziona un'aula dalla lista 
+2. L'Operatore seleziona l'opzione 'Modifica' 
+3. Il sistema mostra i dati correnti 
+4. L'Operatore modifica uno o più campi. 
+5. L'Operatore conferma. 
+6. Il sistema convalida i nuovi campi. 
+7. Il sistema aggiorna l'archivio. 
+8. Il sistema mostra la lista aggiornata. 
 
 Flussi alternativi:<br />
-- 4a. L'Operatore annulla l'operazione
+- 5a. L'Operatore annulla l'operazione
     - Nessuna modifica effettuata all'archivio
     - L'esecuzione riprende dal passo 1
-- 5a. Uno dei campi è mancante o non valido
+- 6a. Uno dei campi è mancante o non valido
     - Il sistema segnala l'errore e non salva l'operazione
-    - L'esecuzione riprende dal passo 2
+    - L'esecuzione riprende dal passo 4
+- 6b. Tutti i campi rimangono immutati
+    - Il sistema non aggiorna i dati.
+    - L'esecuzione riprende dal passo 4
 
 Postcondizioni: I dati dell'aula sono aggiornati<br />
 ### UC03 - Cancellare un'aula
 Attore: Operatore<br />
 Precondizioni: L'archivio è stato caricato. Esiste almeno un'aula.<br />
 Flusso di eventi:<br />
-1. L'Operatore seleziona un'aula e sceglie 'Cancella' 
-2. Il sistema chiede conferma 
-3. L'operatore conferma 
-4. Il sistema elimina l'aula 
-5. Il sistema salva 
-6. Il sistema mostra la lista aggiornata 
+1. L'Operatore seleziona un'aula 
+2. L'Operatore seleziona l'opzione 'Cancella' 
+3. Il sistema chiede conferma 
+4. L'operatore conferma 
+5. Il sistema verifica l'esistenza di prenotazioni associate. Se non ne trova prosegue. 
+6. Il sistema elimina l'aula 
+7. Il sistema salva 
+8. Il sistema mostra la lista aggiornata 
 
 Flussi alternativi:<br />
-- 3a. L'operatore annulla l'operazione
+- 4a. L'operatore annulla l'operazione
     - Nessuna modifica effettuata all'archivio
+    - L'esecuzione riprende dal passo 1
+- 5a. Il sistema trova prenotazioni associate
+    - Il sistema visualizza le prenotazioni.
+    - Il sistema chiede conferma.
+    - L'operatore conferma
+    - Il sistema elimina le prenotazioni associate all'aula.
+    - L'esecuzione riprende dal passo 6
+- 5b. Il sistema trova prenotazioni associate
+    - Il sistema visualizza le prenotazioni.
+    - Il sistema chiede conferma.
+    - L'operatore annulla
     - L'esecuzione riprende dal passo 1
 
 Postcondizioni: L'aula non è più presente nell'archivio<br />
@@ -90,7 +109,7 @@ Flussi alternativi:<br />
 - 2a. Nessuna aula è presente nell'archivio
     - Il sistema mostra un messaggio di notifica.
 
-Postcondizioni: Nessuna modifica ai dati effettuata<br />
+Postcondizioni: Nessuna modifica ai dati effettuata. Il sitema mostra la lista delle aule.<br />
 ### UC05 - Cercare un'aula
 Attore: Operatore<br />
 Precondizioni: L'archivio è stato caricato.<br />
@@ -106,7 +125,7 @@ Flussi alternativi:<br />
 - 2a. Nessun risultato
     - Messaggio di errore 'nessuna aula trovata'
 
-Postcondizioni: Nessuna modifica ai dati effettuata<br />
+Postcondizioni: Nessuna modifica ai dati effettuata. Il sistema mostra l'elenco delle aule filtrato secondo i criteri di ricerca.<br />
 
 ## 2. Gestione docente
 ### UC06 - Inserire un docente
@@ -138,37 +157,54 @@ Postcondizioni: Esiste un nuovo docente<br />
 Attore: Operatore<br />
 Precondizioni: L'archivio è stato caricato. Esiste un docente.<br />
 Flusso di eventi:<br />
-1. L'Operatore seleziona un docente dalla lista e sceglie 'Modifica' 
-2. Il sistema mostra i dati correnti 
-3. L'Operatore modifica uno o più campi. 
-4. L'Operatore conferma. 
-5. Il sistema convalida i nuovi campi. 
-6. Il sistema aggiorna l'archivio. 
-7. Il sistema mostra la lista aggiornata. 
+1. L'Operatore seleziona un docente dalla lista 
+2. L'Operatore seleziona l'opzione 'Modifica' 
+3. Il sistema mostra i dati correnti 
+4. L'Operatore modifica uno o più campi. 
+5. L'Operatore conferma. 
+6. Il sistema convalida i nuovi campi. 
+7. Il sistema aggiorna l'archivio. 
+8. Il sistema mostra la lista aggiornata. 
 
 Flussi alternativi:<br />
-- 4a. L'Operatore annulla l'operazione
+- 5a. L'Operatore annulla l'operazione
     - Nessuna modifica effettuata all'archivio
     - L'esecuzione riprende dal passo 1
-- 5a. Uno dei campi è mancante o non valido
+- 6a. Uno dei campi è mancante o non valido
     - Il sistema segnala l'errore e non salva l'operazione
-    - L'esecuzione riprende dal passo 3
+    - L'esecuzione riprende dal passo 4
+- 6b. Tutti i campi rimangono immutati
+    - Il sistema non aggiorna i dati.
+    - L'esecuzione riprende dal passo 4
 
 Postcondizioni: I dati del docente sono aggiornati<br />
 ### UC08 - Cancellare un docente
 Attore: Operatore<br />
 Precondizioni: L'archivio è stato caricato. Esiste almeno un docente.<br />
 Flusso di eventi:<br />
-1. L'Operatore seleziona un docente e sceglie 'Cancella' 
-2. Il sistema chiede conferma 
-3. L'operatore conferma 
-4. Il sistema elimina il docente 
-5. Il sistema salva 
-6. Il sistema mostra la lista aggiornata 
+1. L'Operatore seleziona un docente. 
+2. L'Operatore seleziona l'opzione 'Cancella'. 
+3. Il sistema chiede conferma 
+4. L'operatore conferma 
+5. Il sistema verifica l'esistenza di prenotazioni associate. Se non ne trova prosegue. 
+6. Il sistema elimina il docente 
+7. Il sistema salva 
+8. Il sistema mostra la lista aggiornata 
 
 Flussi alternativi:<br />
-- 3a. L'operatore annulla l'operazione
+- 4a. L'operatore annulla l'operazione
     - Nessuna modifica effettuata all'archivio
+    - L'esecuzione riprende dal passo 1
+- 5a. Il sistema trova prenotazioni associate
+    - Il sistema visualizza le prenotazioni.
+    - Il sistema chiede conferma.
+    - L'operatore conferma
+    - Il sistema elimina le prenotazioni associate al docente.
+    - L'esecuzione riprende dal passo 6
+- 5b. Il sistema trova prenotazioni associate
+    - Il sistema visualizza le prenotazioni.
+    - Il sistema chiede conferma.
+    - L'operatore annulla
     - L'esecuzione riprende dal passo 1
 
 Postcondizioni: Il docente non è più presente nell'archivio<br />
@@ -183,7 +219,7 @@ Flussi alternativi:<br />
 - 2a. Nessun docente è presente nell'archivio
     - Il sistema mostra un messaggio di notifica.
 
-Postcondizioni: Nessuna modifica ai dati effettuata<br />
+Postcondizioni: Nessuna modifica ai dati effettuata. Il sitema mostra la lista dei docenti.<br />
 ### UC10 - Cercare un docente
 Attore: Operatore<br />
 Precondizioni: L'archivio è stato caricato. L'archivio è caricato.<br />
@@ -200,7 +236,7 @@ Flussi alternativi:<br />
 - 2a. Nessun risultato
     - Messaggio di errore 'nessun docente trovato'
 
-Postcondizioni: Nessuna modifica ai dati effettuata<br />
+Postcondizioni: Nessuna modifica ai dati effettuata. Il sistema mostra l'elenco dei docenti filtrato secondo i criteri di ricerca.<br />
 
 ## 3. Gestione prenotazioni
 ### UC11 - Cercare aule disponibili
@@ -208,29 +244,29 @@ Attore: Operatore<br />
 Precondizioni: L'archivio è stato caricato. Esiste almeno un'aula.<br />
 Flusso di eventi:<br />
 1. L'operatore inserisce i criteri di ricerca quali data, ora di inizio e ora di fine e/o capienza. 
-2. Il sistema calcola le aule non occupate in quell'intervallo 
+2. Il sistema calcola le aule libere secondo i criteri inseriti. 
 3. Il sistema mostra l'elenco delle aule libere 
 
 Flussi alternativi:<br />
-- 1a. Campi non validi (es. Ora di fine precedente all'ora di inizio, capienza negativa)
+- 1a. Criteri non validi
     - Visualizza un messaggio di errore
     - L'esecuzione riprende dal passo 1
 - 3a. Nessuna aula libera
     - Visualizza un messaggio di errore
 
-Postcondizioni: Nessuna<br />
+Postcondizioni: Il sistema mostra l'elenco delle aule libere<br />
 ### UC12 - Inserire una prenotazione singola
 Attore: Operatore<br />
-Precondizioni: L'archivio è stato caricato. Esistono almeno un'aula e un docente.<br />
+Precondizioni: L'archivio è stato caricato. Esistono almeno un'aula e un docente. <br />
 Flusso di eventi:<br />
 1. L'Operatore sceglie 'Nuova prenotazione' 
-2. Il sistema mostra il form 
-3. Compila il form inserendo data e ora di inizio e fine attività, selezionando un'aula, selezionando il docente responsabile, inserendo tipo di attività e denominazione. 
+2. Il sistema mostra il form. 
+3. L'operatore compila il form inserendo data e ora di inizio e fine attività, tipo di attività e denominazione, l'aula e il docente responsabile. 
 4. Il sistema convalida i dati e verifica le sovrapposizioni 
 5. Se non ci sono conflitti, il sistema crea la prenotazione e salva 
 
 Flussi alternativi:<br />
-- 3a. Campi inseriti non validi (es. Ora di fine precedente all'ora di inizio, capienza negativa)
+- 3a. Campi inseriti non validi
     - Visualizza un messaggio di errore
     - Non crea alcuna prenotazione
     - L'esecuzione riprende dal passo 2
@@ -241,30 +277,26 @@ Flussi alternativi:<br />
     - Viene visualizzato un messaggio di errore
     - L'esecuzione riprende dal passo 2
 
-Postcondizioni: Nessuna<br />
+Postcondizioni: La prenotazione singola è stata creata.<br />
 ### UC13 - Inserire una prenotazione ricorrente
 Attore: Operatore<br />
-Precondizioni: L'archivio è stato caricato. Esistono almeno un'aula e un docente.<br />
+Precondizioni: L'archivio è stato caricato. Esistono almeno un'aula e un docente. L'operatore seleziona 'prenotazione ricorrente' in UC12<br />
 Flusso di eventi:<br />
-1. L'operatore seleziona 'prenotazione ricorrente'. 
-2. L'operatore indica la data di termine 
-3. Il sistema genera le occorrenze: stesso giorno della settimana e stessa fascia oraria, dalla data di inizio alla data di termine inclusa. 
-4. Il sistema verifica le sovrapposizioni per ogni occorrenza 
-5. Se nessuna occorrenza è in conflitto il sistema crea l'intera serie e salva 
+1. L'operatore indica la data di termine 
+2. Il sistema genera le occorrenze: stesso giorno della settimana e stessa fascia oraria, dalla data di inizio alla data di termine inclusa. 
+3. Il sistema verifica le sovrapposizioni per ogni occorrenza 
+4. Se nessuna occorrenza è in conflitto il sistema crea l'intera serie e salva 
 
 Flussi alternativi:<br />
-- 1a. Campi inseriti non validi
+- 1a. Campi inseriti non validi in UC12 o UC13
     - Visualizza un messaggio di errore
-    - L'esecuzione riprende dal passo 1
-- 2a. Data di termine precedente alla data di inizio
-    - Visualizza un messaggio di errore
-    - L'esecuzione riprende dal passo 1
-- 4a. Il sistema rileva delle sovrapposizioni
+    - [Errore: uuid non trovato]
+- 3a. Il sistema rileva delle sovrapposizioni
     - Visualizza un messaggio di errore elencando le date in conflitto
     - Non effettua la creazione della serie di eventi
-    - L'esecuzione riprende dal passo 1
+    - [Errore: uuid non trovato]
 
-Postcondizioni: Nessuna<br />
+Postcondizioni: La prenotazione ricorrente è stata creata.<br />
 ### UC14 - Visualizzare le prenotazioni
 Attore: Operatore<br />
 Precondizioni: L'archivio è stato caricato.<br />
@@ -278,26 +310,27 @@ Flussi alternativi:<br />
 - 3a. La visualizzazione filtrata non trova alcuna corrispondenza
     - Visualizza un messaggio di errore
 
-Postcondizioni: Nessuna modifica effettuata<br />
+Postcondizioni: l sitema mostra la lista delle prenotazioni.<br />
 ### UC15 - Cancellare la prenotazione singola
 Attore: Operatore<br />
 Precondizioni: L'archivio è stato caricato. Esiste almeno una prenotazione.<br />
 Flusso di eventi:<br />
-1. L'operatore seleziona una prenotazione e sceglie 'Cancella' (**UC14**)
-2. Il sistema chiede conferma 
-3. L'operatore conferma 
-4. Il sistema elimina solo quella occorrenza e salva. 
+1. L'Operatore seleziona una prenotazione (**UC14**)
+2. L'Operatore seleziona l'opzione 'Cancella' 
+3. Il sistema chiede conferma 
+4. L'operatore conferma 
+5. Il sistema elimina solo quella occorrenza e salva. 
 
 Flussi alternativi:<br />
-- 1a. La prenotazione appartiene a una serie
+- 2a. La prenotazione appartiene a una serie
     - Il sistema mostra la scelta 'elimina prenotazione singola' o 'elimina serie'
     - L'operatore sceglie 'elimina prenotazione singola'
-    - L'esecuzione riprende dal passo 2
-- 1b. La prenotazione appartiene a una serie
+    - L'esecuzione riprende dal passo 3
+- 2b. La prenotazione appartiene a una serie
     - Il sistema mostra la scelta 'elimina prenotazione singola' o 'elimina serie'
     - L'operatore sceglie 'elimina serie'
-    - L'esecuzione riprende dal passo UC20.2
-- 3a. L'operatore annulla
+    - L'esecuzione riprende dal passo UC20.4
+- 4a. L'operatore annulla
     - L'esecuzione riprende dal passo 1
 
 Postcondizioni: La prenotazione non è più presente; le altre occorrenze della serie restano.<br />
@@ -305,23 +338,24 @@ Postcondizioni: La prenotazione non è più presente; le altre occorrenze della 
 Attore: Operatore<br />
 Precondizioni: L'archivio è stato caricato. Esiste almeno una prenotazione singola.<br />
 Flusso di eventi:<br />
-1. L'operatore seleziona una prenotazione singola e sceglie 'Modifica' (**UC14**)
-2. Il sistema mostra i dati correnti 
-3. L'operatore modifica i campi 
-4. L'operatore conferma 
-5. Il sistema verifica la validità dei dati inseriti 
-6. Il sistema aggiorna i dati 
+1. L'operatore seleziona una prenotazione singola (**UC14**)
+2. L'Operatore seleziona l'opzione 'Modifica' 
+3. Il sistema mostra i dati correnti 
+4. L'operatore modifica i campi 
+5. L'operatore conferma 
+6. Il sistema verifica la validità dei dati inseriti 
+7. Il sistema aggiorna i dati 
 
 Flussi alternativi:<br />
-- 3a. L'operatore modifica la prenotazione da singola a ricorrente
+- 4a. L'operatore modifica la prenotazione da singola a ricorrente
     - L'esecuzione riprende da UC17
-- 4a. L'operatore annulla
+- 5a. L'operatore annulla
     - L'esecuzione riprende dal passo 1
 
-Postcondizioni: Nessuna<br />
+Postcondizioni: La prenotazione è stata modificata<br />
 ### UC17 - Modificare la prenotazione da singola a ricorrente
 Attore: Operatore<br />
-Precondizioni: L'archivio è stato caricato. Esiste almeno una prenotazione singola. L'operatore sta modificando una prenotazione singola.<br />
+Precondizioni: L'archivio è stato caricato. Esiste almeno una prenotazione singola. L'operatore sta modificando una prenotazione singola in UC16.<br />
 Flusso di eventi:<br />
 1. L'operatore seleziona 'prenotazione ricorrente'. 
 2. L'operatore indica la data di termine 
@@ -334,7 +368,7 @@ Flussi alternativi:<br />
     - Visualizza un messaggio di errore
     - L'esecuzione riprende dal passo 1
 - 1b. L'operatore deseleziona 'prenotazione ricorrente'
-    - Nessuna modifica effettuata da questo caso d'uso.
+    - Nessuna modifica effettuata da UC17
     - L'esecuzione riprende da UC16
 - 2a. Data di termine precedente alla data di inizio
     - Visualizza un messaggio di errore
@@ -344,29 +378,30 @@ Flussi alternativi:<br />
     - Non effettua la creazione della serie di eventi
     - L'esecuzione riprende dal passo 1
 
-Postcondizioni: Nessuna<br />
+Postcondizioni: Modificata la prenotazione da singola a ricorrente.<br />
 ### UC18 - Modificare la prenotazione ricorrente
 Attore: Operatore<br />
 Precondizioni: L'archivio è stato caricato. Esiste almeno una prenotazione ricorrente.<br />
 Flusso di eventi:<br />
-1. L'operatore seleziona una prenotazione ricorrente e sceglie 'Modifica' (**UC14**)
-2. Il sistema mostra i dati correnti 
-3. L'operatore modifica i campi 
-4. L'operatore conferma 
-5. Il sistema verifica la validità dei dati inseriti 
-6. Il sistema aggiorna i dati 
+1. L'operatore seleziona una prenotazione ricorrente (**UC14**)
+2. L'Operatore seleziona l'opzione 'Modifica' 
+3. Il sistema mostra i dati correnti 
+4. L'operatore modifica i campi 
+5. L'operatore conferma 
+6. Il sistema verifica la validità dei dati inseriti 
+7. Il sistema aggiorna i dati 
 
 Flussi alternativi:<br />
-- 3a. L'operatore modifica la prenotazione da ricorrente a singola
+- 4a. L'operatore modifica la prenotazione da ricorrente a singola
     - L'esecuzione riprende da UC19
-- 4a. L'operatore annulla
+- 5a. L'operatore annulla
     - L'esecuzione riprende dal passo 1
-- 5a. L'operatore ha modificato la data di termine anticipandola
+- 6a. L'operatore ha modificato la data di termine anticipandola
     - Il sistema verifica se ci sono prenotazioni da rimuovere
     - Il sistema avvisa e chiede conferma
     - Se l'operatore conferma si procede con l'eliminazione delle prenotazioni e l'esecuzione riprende dal passo 6.
     - Se l'operatore annulla l'esecuzione riprende dal passo 3.
-- 5b. L'operatore ha modificato la data di termine posticipandola
+- 6b. L'operatore ha modificato la data di termine posticipandola
     - Il sistema verifica se è possibile effettuare le nuove prenotazioni
     - Se possibile, il sistema avvisa e chiede conferma: se l'operatore conferma si procede con la creazione degli eventi, se annulla l'esecuzione riprende dal passo 3.
     - Se non è possibile, il sistema avvisa e l'operazione viene annullata, l'esecuzione riprende dal passo 3.
@@ -398,18 +433,20 @@ Postcondizioni: Nessuna<br />
 Attore: Operatore<br />
 Precondizioni: L'archivio è stato caricato. Esiste una prenotazione appartenente a una serie ricorrente.<br />
 Flusso di eventi:<br />
-1. L'operatore seleziona una prenotazione della serie e sceglie 'Cancella' e poi 'elimina serie'. 
-2. Il sistema mostra le occorrenze che saranno eliminate. 
-3. Il sistema chiede conferma. 
-4. L'operatore conferma. 
-5. Il sistema elimina le occorrenze con data successiva o uguale alla data dell'occorrenza eliminata 
-6. Il sistema aggiorna i dati. 
+1. L'operatore seleziona una prenotazione della serie. (**UC14**)
+2. L'Operatore seleziona l'opzione 'Cancella'. 
+3. L'Operatore seleziona 'elimina serie'. 
+4. Il sistema mostra le occorrenze che saranno eliminate. 
+5. Il sistema chiede conferma. 
+6. L'operatore conferma. 
+7. Il sistema elimina le occorrenze con data successiva o uguale alla data dell'occorrenza eliminata 
+8. Il sistema aggiorna i dati. 
 
 Flussi alternativi:<br />
-- 2a. Non ci sono occorrenze future
+- 4a. Non ci sono occorrenze future
     - Visualizza un messaggio
-    - L'esecuzione riprende dal passo 3
-- 4a. L'operatore annulla
+    - L'esecuzione riprende dal passo 5
+- 6a. L'operatore annulla
     - L'esecuzione riprende dal passo 1
 
 Postcondizioni: Nessuna<br />
@@ -470,23 +507,23 @@ Postcondizioni: Nessuna<br />
 # Matrice di tracciabilità
 |Caso d'uso| Requisiti funzionali | Requisiti non funzionali | Design | Codice | Test |
 |----------|----------------------|--------------------------|--------|--------|------|
-| UC01| UI-23, ED-21, FI-01, ED-20| NF-04, NF-01||||
-| UC02| UI-23, ED-21, FI-02| NF-04, NF-01||||
-| UC03| FI-03, UI-22| NF-01||||
-| UC04| UI-23, FI-04| NF-04, NF-01||||
+| UC01| ED-21, UI-23, FI-01, ED-20| NF-04, NF-01||||
+| UC02| ED-21, UI-23, FI-02| NF-04, NF-01||||
+| UC03| UI-22, FI-03| NF-01||||
+| UC04| FI-04, UI-23| NF-04, NF-01||||
 | UC05| UI-23, FI-05| NF-04, NF-01||||
-| UC06| UI-23, ED-21, FI-06, ED-20| NF-04, NF-01||||
-| UC07| UI-23, ED-21, FI-07| NF-04, NF-01||||
-| UC08| FI-08, UI-22| NF-01||||
+| UC06| ED-21, UI-23, FI-06, ED-20| NF-04, NF-01||||
+| UC07| ED-21, UI-23, FI-07| NF-04, NF-01||||
+| UC08| UI-22, FI-08| NF-01||||
 | UC09| UI-23, FI-09| NF-04, NF-01||||
 | UC10| UI-23, FI-10| NF-04, NF-01||||
 | UC11| FI-11, UI-23| NF-04, NF-01||||
-| UC12| UI-23, ED-21, FI-12| NF-04, NF-01||||
-| UC13| UI-23, ED-21, FI-13| NF-04, NF-01||||
-| UC14| UI-23, FI-14, FI-15| NF-04, NF-01||||
-| UC15| UI-23, FI-16, UI-22| NF-01||||
+| UC12| FI-12, ED-21, UI-23| NF-04, NF-01||||
+| UC13| ED-21, UI-23, FI-13| NF-04, NF-01||||
+| UC14| FI-15, UI-23, FI-14| NF-04, NF-01||||
+| UC15| FI-16, UI-22, UI-23| NF-01||||
 | UC16| FI-25| NF-04, NF-01||||
-| UC17| FI-25, FI-26| NF-04, NF-01||||
+| UC17| FI-26, FI-25| NF-04, NF-01||||
 | UC18| FI-25| NF-04, NF-01||||
-| UC19| FI-27, FI-25, UI-22| NF-04, NF-01||||
-| UC20| UI-23, UI-22, FI-17| NF-04, NF-01||||
+| UC19| FI-27, UI-22, FI-25| NF-04, NF-01||||
+| UC20| FI-17, UI-22, UI-23| NF-04, NF-01||||
