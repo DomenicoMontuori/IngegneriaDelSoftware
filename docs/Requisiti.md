@@ -18,7 +18,7 @@ Il sistema è un'applicazione desktop dotata di un'interfaccia grafica che non p
 ## 1. Gestione aula
 ### UC01 - Inserire aula
 Attore: Operatore<br />
-Precondizioni: L'archivio è stato caricato<br />
+Precondizioni: L'archivio è stato caricato.<br />
 Flusso di eventi:<br />
 1. L'operatore sceglie 'nuova aula'. 
 2. Il sistema mostra il form di creazione. 
@@ -43,7 +43,7 @@ Flussi alternativi:<br />
 Postcondizioni: Esiste una nuova aula<br />
 ### UC02 - Modifica aula
 Attore: Operatore<br />
-Precondizioni: Esiste un'aula<br />
+Precondizioni: L'archivio è stato caricato. Esiste un'aula.<br />
 Flusso di eventi:<br />
 1. L'Operatore seleziona un'aula dalla lista e sceglie 'Modifica' 
 2. Il sistema mostra i dati correnti 
@@ -64,7 +64,7 @@ Flussi alternativi:<br />
 Postcondizioni: I dati dell'aula sono aggiornati<br />
 ### UC03 - Cancellare un'aula
 Attore: Operatore<br />
-Precondizioni: Esiste almeno un'aula<br />
+Precondizioni: L'archivio è stato caricato. Esiste almeno un'aula.<br />
 Flusso di eventi:<br />
 1. L'Operatore seleziona un'aula e sceglie 'Cancella' 
 2. Il sistema chiede conferma 
@@ -81,7 +81,7 @@ Flussi alternativi:<br />
 Postcondizioni: L'aula non è più presente nell'archivio<br />
 ### UC04 - Visualizzare la lista delle aule
 Attore: Operatore<br />
-Precondizioni: L'archivio è caricato<br />
+Precondizioni: L'archivio è stato caricato.<br />
 Flusso di eventi:<br />
 1. L'Operatore apre la sezione Aule 
 2. Il sistema mostra tutte le aule con codice, nome, edificio, piano e capienza 
@@ -93,7 +93,7 @@ Flussi alternativi:<br />
 Postcondizioni: Nessuna modifica ai dati effettuata<br />
 ### UC05 - Cercare un'aula
 Attore: Operatore<br />
-Precondizioni: L'archivio è caricato<br />
+Precondizioni: L'archivio è stato caricato.<br />
 Flusso di eventi:<br />
 1. L'Operatore inserisce uno o più criteri di ricerca 
 2. Il sistema mostra le aule che soddisfano tutti i criteri inseriti 
@@ -111,7 +111,7 @@ Postcondizioni: Nessuna modifica ai dati effettuata<br />
 ## 2. Gestione docente
 ### UC06 - Inserire un docente
 Attore: Operatore<br />
-Precondizioni: L'archivio è stato caricato<br />
+Precondizioni: L'archivio è stato caricato.<br />
 Flusso di eventi:<br />
 1. L'operatore sceglie 'nuovo docente'. 
 2. Il sistema mostra il form di creazione. 
@@ -136,7 +136,7 @@ Flussi alternativi:<br />
 Postcondizioni: Esiste un nuovo docente<br />
 ### UC07 - Modificare un docente
 Attore: Operatore<br />
-Precondizioni: Esiste un docente<br />
+Precondizioni: L'archivio è stato caricato. Esiste un docente.<br />
 Flusso di eventi:<br />
 1. L'Operatore seleziona un docente dalla lista e sceglie 'Modifica' 
 2. Il sistema mostra i dati correnti 
@@ -157,7 +157,7 @@ Flussi alternativi:<br />
 Postcondizioni: I dati del docente sono aggiornati<br />
 ### UC08 - Cancellare un docente
 Attore: Operatore<br />
-Precondizioni: Esiste almeno un docente<br />
+Precondizioni: L'archivio è stato caricato. Esiste almeno un docente.<br />
 Flusso di eventi:<br />
 1. L'Operatore seleziona un docente e sceglie 'Cancella' 
 2. Il sistema chiede conferma 
@@ -174,7 +174,7 @@ Flussi alternativi:<br />
 Postcondizioni: Il docente non è più presente nell'archivio<br />
 ### UC09 - Visualizzare la lista dei docenti
 Attore: Operatore<br />
-Precondizioni: L'archivio è caricato<br />
+Precondizioni: L'archivio è stato caricato.<br />
 Flusso di eventi:<br />
 1. L'Operatore apre la sezione Docenti 
 2. Il sistema mostra tutti i docenti con email istituzionale, cognome e nome. 
@@ -186,7 +186,7 @@ Flussi alternativi:<br />
 Postcondizioni: Nessuna modifica ai dati effettuata<br />
 ### UC10 - Cercare un docente
 Attore: Operatore<br />
-Precondizioni: L'archivio è caricato<br />
+Precondizioni: L'archivio è stato caricato. L'archivio è caricato.<br />
 Flusso di eventi:<br />
 1. L'Operatore inserisce uno o più criteri di ricerca 
 2. Il sistema mostra i docenti che soddisfano tutti i criteri inseriti 
@@ -205,7 +205,7 @@ Postcondizioni: Nessuna modifica ai dati effettuata<br />
 ## 3. Gestione prenotazioni
 ### UC11 - Cercare aule disponibili
 Attore: Operatore<br />
-Precondizioni: Esiste almeno un'aula<br />
+Precondizioni: L'archivio è stato caricato. Esiste almeno un'aula.<br />
 Flusso di eventi:<br />
 1. L'operatore inserisce i criteri di ricerca quali data, ora di inizio e ora di fine e/o capienza. 
 2. Il sistema calcola le aule non occupate in quell'intervallo 
@@ -221,12 +221,12 @@ Flussi alternativi:<br />
 Postcondizioni: Nessuna<br />
 ### UC12 - Inserire una prenotazione singola
 Attore: Operatore<br />
-Precondizioni: Esistono almeno un'aula e un docente<br />
+Precondizioni: L'archivio è stato caricato. Esistono almeno un'aula e un docente.<br />
 Flusso di eventi:<br />
 1. L'Operatore sceglie 'Nuova prenotazione' 
 2. Il sistema mostra il form 
 3. Compila il form inserendo data e ora di inizio e fine attività, selezionando un'aula, selezionando il docente responsabile, inserendo tipo di attività e denominazione. 
-4. Il sistema convalida i dati e verifica le sovrapposizioni (**UC21**)
+4. Il sistema convalida i dati e verifica le sovrapposizioni 
 5. Se non ci sono conflitti, il sistema crea la prenotazione e salva 
 
 Flussi alternativi:<br />
@@ -244,12 +244,12 @@ Flussi alternativi:<br />
 Postcondizioni: Nessuna<br />
 ### UC13 - Inserire una prenotazione ricorrente
 Attore: Operatore<br />
-Precondizioni: Esistono almeno un'aula e un docente.<br />
+Precondizioni: L'archivio è stato caricato. Esistono almeno un'aula e un docente.<br />
 Flusso di eventi:<br />
 1. L'operatore seleziona 'prenotazione ricorrente'. 
 2. L'operatore indica la data di termine 
 3. Il sistema genera le occorrenze: stesso giorno della settimana e stessa fascia oraria, dalla data di inizio alla data di termine inclusa. 
-4. Il sistema verifica le sovrapposizioni per ogni occorrenza (**UC21**)
+4. Il sistema verifica le sovrapposizioni per ogni occorrenza 
 5. Se nessuna occorrenza è in conflitto il sistema crea l'intera serie e salva 
 
 Flussi alternativi:<br />
@@ -267,7 +267,7 @@ Flussi alternativi:<br />
 Postcondizioni: Nessuna<br />
 ### UC14 - Visualizzare le prenotazioni
 Attore: Operatore<br />
-Precondizioni: L'archivio è caricato<br />
+Precondizioni: L'archivio è stato caricato.<br />
 Flusso di eventi:<br />
 1. L'operatore apre la sezione 'Prenotazioni' 
 2. Il sistema mostra le prenotazioni ordinate per data e ora 
@@ -281,7 +281,7 @@ Flussi alternativi:<br />
 Postcondizioni: Nessuna modifica effettuata<br />
 ### UC15 - Cancellare la prenotazione singola
 Attore: Operatore<br />
-Precondizioni: Esiste almeno una prenotazione<br />
+Precondizioni: L'archivio è stato caricato. Esiste almeno una prenotazione.<br />
 Flusso di eventi:<br />
 1. L'operatore seleziona una prenotazione e sceglie 'Cancella' (**UC14**)
 2. Il sistema chiede conferma 
@@ -300,10 +300,10 @@ Flussi alternativi:<br />
 - 3a. L'operatore annulla
     - L'esecuzione riprende dal passo 1
 
-Postcondizioni: La prenotazione non è più presente; le altre occorrenze della serie restano<br />
+Postcondizioni: La prenotazione non è più presente; le altre occorrenze della serie restano.<br />
 ### UC16 - Modificare la prenotazione singola
 Attore: Operatore<br />
-Precondizioni: Esiste almeno una prenotazione singola<br />
+Precondizioni: L'archivio è stato caricato. Esiste almeno una prenotazione singola.<br />
 Flusso di eventi:<br />
 1. L'operatore seleziona una prenotazione singola e sceglie 'Modifica' (**UC14**)
 2. Il sistema mostra i dati correnti 
@@ -321,12 +321,12 @@ Flussi alternativi:<br />
 Postcondizioni: Nessuna<br />
 ### UC17 - Modificare la prenotazione da singola a ricorrente
 Attore: Operatore<br />
-Precondizioni: Esiste almeno una prenotazione singola. L'operatore sta modificando una prenotazione singola<br />
+Precondizioni: L'archivio è stato caricato. Esiste almeno una prenotazione singola. L'operatore sta modificando una prenotazione singola.<br />
 Flusso di eventi:<br />
 1. L'operatore seleziona 'prenotazione ricorrente'. 
 2. L'operatore indica la data di termine 
 3. Il sistema genera le occorrenze: stesso giorno della settimana e stessa fascia oraria, dalla data di inizio alla data di termine inclusa. 
-4. Il sistema verifica le sovrapposizioni per ogni occorrenza (**UC21**)
+4. Il sistema verifica le sovrapposizioni per ogni occorrenza 
 5. Se nessuna occorrenza è in conflitto il sistema crea l'intera serie e salva 
 
 Flussi alternativi:<br />
@@ -347,7 +347,7 @@ Flussi alternativi:<br />
 Postcondizioni: Nessuna<br />
 ### UC18 - Modificare la prenotazione ricorrente
 Attore: Operatore<br />
-Precondizioni: Esiste almeno una prenotazione ricorrente<br />
+Precondizioni: L'archivio è stato caricato. Esiste almeno una prenotazione ricorrente.<br />
 Flusso di eventi:<br />
 1. L'operatore seleziona una prenotazione ricorrente e sceglie 'Modifica' (**UC14**)
 2. Il sistema mostra i dati correnti 
@@ -374,12 +374,12 @@ Flussi alternativi:<br />
 Postcondizioni: Nessuna<br />
 ### UC19 - Modificare la prenotazione da ricorrente a singola
 Attore: Operatore<br />
-Precondizioni: Esiste almeno una prenotazione ricorrente. L'operatore sta modificando una prenotazione ricorrente<br />
+Precondizioni: L'archivio è stato caricato. Esiste almeno una prenotazione ricorrente. L'operatore sta modificando una prenotazione ricorrente.<br />
 Flusso di eventi:<br />
 1. L'operatore deseleziona 'prenotazione ricorrente'. 
 2. Il sistema verifica se esistono prenotazioni successive, in tal caso le mostra e avvisa che saranno eliminate. 
 3. L'operatore conferma. 
-4. Il sistema verifica la correttezza dei dati (**UC21**)
+4. Il sistema verifica la correttezza dei dati 
 5. Il sistema elimina le occorrenze con data non uguale alla data dell'occorrenza modificata. 
 6. Il sistema aggiorna i dati. 
 
@@ -396,7 +396,7 @@ Flussi alternativi:<br />
 Postcondizioni: Nessuna<br />
 ### UC20 - Cancellare tutte le prenotazioni future di una serie
 Attore: Operatore<br />
-Precondizioni: Esiste una prenotazione appartenente a una serie ricorrente<br />
+Precondizioni: L'archivio è stato caricato. Esiste una prenotazione appartenente a una serie ricorrente.<br />
 Flusso di eventi:<br />
 1. L'operatore seleziona una prenotazione della serie e sceglie 'Cancella' e poi 'elimina serie'. 
 2. Il sistema mostra le occorrenze che saranno eliminate. 
@@ -414,39 +414,6 @@ Flussi alternativi:<br />
 
 Postcondizioni: Nessuna<br />
 
-## 4. Gestione dati
-### UC21 - Verificare le sovrapposizioni
-Attore: Nessuno<br />
-Precondizioni: Note le informazioni di una prenotazione di cui controllare eventuali sovrapposizioni con un insieme di note prenotazioni.<br />
-Flusso di eventi:<br />
-1. Il sistema cerca prenotazioni della stessa aula con intervallo temporale sovrapposto 
-2. Il sistema cerca prenotazioni dello stesso docente con intervallo temporale sovrapposto 
-3. Se non trova nulla il risultato è 'nessun conflitto' 
-
-Flussi alternativi:<br />
-- 1a. Trovata una prenotazione
-    - Esito: 'conflitto'
-- 2a. Trovata una prenotazione
-    - Esito: 'conflitto'
-
-Postcondizioni: Nessuna modifica ai dati<br />
-### UC22 - Salvare e caricare dati nell'archivio
-Attore: Nessuno<br />
-Precondizioni: Nessuna<br />
-Flusso di eventi:<br />
-1. All'avvio il sistema legge il file di archivio e carica aule, docenti e prenotazioni 
-2. Dopo ogni operazione che modifica i dati, il sistema salva l'archivio su file e aggiorna i propri valori caricati 
-
-Flussi alternativi:<br />
-- 1a. File assente
-    - Il sistema inizializza l'archivio creando una struttura iniziale dei suoi schemi
-- 1b. Errore nella lettura del file
-    - Il sistema segnala l'errore e non sovrascrive il file esistente
-- 1c. Salvataggio non riuscito
-    - Il sistema avvisa l'Operatore
-
-Postcondizioni: Il file riflette lo stato corrente dei dati<br />
-
 
 # Business flow
 | ID   | Business flow                                                       | Priorità    |
@@ -459,33 +426,33 @@ Postcondizioni: Il file riflette lo stato corrente dei dati<br />
 # Requisiti funzionali
 | ID | Requisito | Priorità | Caso d'uso |
 |----|-----------|----------|------------|
-| FI-01 | Il sistema deve consentire di inserire un'aula con codice univoco, nome, edificio, piano e capienza. | MustHave | UC01|
-| FI-02 | Il sistema deve consentire di modificare i dati di un'aula | ShouldHave | UC02|
-| FI-03 | Il sistema deve consentire l'eliminazione di un'aula | ShouldHave | UC03|
-| FI-04 | Il sistema deve visualizzare la lista delle aule | MustHave | UC04|
-| FI-05 | Il sistema deve permettere la ricerca di aule per nome, codice o capienza minima | ShouldHave | UC05|
-| FI-06 | Il sistema deve consentire di inserire un docente con e-mail istituzionale univoca, nome e cognome | MustHave | UC06|
-| FI-07 | Il sistema deve consentire di modificare nome e cognome di un docente | ShouldHave | UC07|
-| FI-08 | Il sistema deve consentire di cancellare un docente | NiceToHave | UC08|
-| FI-09 | Il sistema deve visualizzare la lista dei docenti ordinata per cognome e nome | NiceToHave | UC09|
-| FI-10 | Il sistema deve permettere la ricerca di docenti per cognome, nome o per email | NiceToHave | UC10|
-| FI-11 | Il sistema deve permettere di cercare le aule disponibili in una data e fascia oraria | NiceToHave | UC11|
-| FI-12 | Il sistema deve consentire di inserire una prenotazione singola con aula, docente, tipo e denominazione attività, data e ora di inizio e fine | MustHave | UC12|
-| FI-13 | Il sistema deve consentire di inserire una prenotazione con ricorrenza settimanale e data di termine | MustHave | UC13|
-| FI-14 | Il sistema deve visualizzare le prenotazioni ordinate per data e ora | ShouldHave | UC14|
-| FI-15 | Il sistema deve permettere di filtrare le prenotazioni per aula o per docente | NiceToHave | UC14|
-| FI-16 | Il sistema deve consentire di cancellare una singola prenotazione | ShouldHave | UC15|
-| FI-17 | Il sistema deve consentire di cancellare tutte le prenotazioni future di una serie ricorrente | ShouldHave | UC20|
-| ED-18 | Il sistema non deve ammettere due prenotazioni sovrapposte per la stessa aula | MustHave | UC21|
-| ED-19 | Il sistema non deve ammettere due prenotazioni sovrapposte per lo stesso docente | MustHave | UC21|
-| ED-20 | Il sistema deve garantire l'unicità del codice aula e dell'e-mail docente | MustHave | UC01, UC06|
-| ED-21 | Il sistema deve validare la correttezza dei dati in ingresso | ShouldHave | UC01, UC02, UC06, UC07, UC12, UC13|
-| UI-22 | Il sistema deve chiedere conferma prima di ogni cancellazione | NiceToHave | UC03, UC08, UC15, UC19, UC20|
-| UI-23 | Il sistema deve mostrare messaggi di errore comprensibili qualora il sistema necessiti di segnalare un errore | NiceToHave | UC01, UC02, UC04, UC05, UC06, UC07, UC09, UC10, UC11, UC12, UC13, UC14, UC15, UC20|
-| ED-24 | Il sistema deve caricare l'archivio da file all'avvio e salvarlo dopo ogni modifica | MustHave | UC22|
-| FI-25 | Il sistema deve consentire la modifica delle informazioni di una prenotazione | ShouldHave | UC16, UC17, UC18, UC19|
-| FI-26 | Il sistema deve gestire la conversione di una prenotazione singola in una prenotazione ricorrente | NiceToHave | UC17|
-| FI-27 | Il sistema deve gestire la conversione di una prenotazione ricorrente in una prenotazione singola | NiceToHave | UC19|
+| FI-01 | Il sistema deve consentire di inserire un'aula con codice univoco, nome, edificio, piano e capienza. | MustHave |UC01|
+| FI-02 | Il sistema deve consentire di modificare i dati di un'aula | ShouldHave |UC02|
+| FI-03 | Il sistema deve consentire l'eliminazione di un'aula | ShouldHave |UC03|
+| FI-04 | Il sistema deve visualizzare la lista delle aule | MustHave |UC04|
+| FI-05 | Il sistema deve permettere la ricerca di aule per nome, codice o capienza minima | ShouldHave |UC05|
+| FI-06 | Il sistema deve consentire di inserire un docente con e-mail istituzionale univoca, nome e cognome | MustHave |UC06|
+| FI-07 | Il sistema deve consentire di modificare nome e cognome di un docente | ShouldHave |UC07|
+| FI-08 | Il sistema deve consentire di cancellare un docente | NiceToHave |UC08|
+| FI-09 | Il sistema deve visualizzare la lista dei docenti ordinata per cognome e nome | NiceToHave |UC09|
+| FI-10 | Il sistema deve permettere la ricerca di docenti per cognome, nome o per email | NiceToHave |UC10|
+| FI-11 | Il sistema deve permettere di cercare le aule disponibili in una data e fascia oraria | NiceToHave |UC11|
+| FI-12 | Il sistema deve consentire di inserire una prenotazione singola con aula, docente, tipo e denominazione attività, data e ora di inizio e fine | MustHave |UC12|
+| FI-13 | Il sistema deve consentire di inserire una prenotazione con ricorrenza settimanale e data di termine | MustHave |UC13|
+| FI-14 | Il sistema deve visualizzare le prenotazioni ordinate per data e ora | ShouldHave |UC14|
+| FI-15 | Il sistema deve permettere di filtrare le prenotazioni per aula o per docente | NiceToHave |UC14|
+| FI-16 | Il sistema deve consentire di cancellare una singola prenotazione | ShouldHave |UC15|
+| FI-17 | Il sistema deve consentire di cancellare tutte le prenotazioni future di una serie ricorrente | ShouldHave |UC20|
+| ED-18 | Il sistema non deve ammettere due prenotazioni sovrapposte per la stessa aula | MustHave ||
+| ED-19 | Il sistema non deve ammettere due prenotazioni sovrapposte per lo stesso docente | MustHave ||
+| ED-20 | Il sistema deve garantire l'unicità del codice aula e dell'e-mail docente | MustHave |UC01, UC06|
+| ED-21 | Il sistema deve validare la correttezza dei dati in ingresso | ShouldHave |UC01, UC02, UC06, UC07, UC12, UC13|
+| UI-22 | Il sistema deve chiedere conferma prima di ogni cancellazione | NiceToHave |UC03, UC08, UC15, UC19, UC20|
+| UI-23 | Il sistema deve mostrare messaggi di errore comprensibili qualora il sistema necessiti di segnalare un errore | NiceToHave |UC01, UC02, UC04, UC05, UC06, UC07, UC09, UC10, UC11, UC12, UC13, UC14, UC15, UC20|
+| ED-24 | Il sistema deve caricare l'archivio da file all'avvio e salvarlo dopo ogni modifica | MustHave ||
+| FI-25 | Il sistema deve consentire la modifica delle informazioni di una prenotazione | ShouldHave |UC16, UC17, UC18, UC19|
+| FI-26 | Il sistema deve gestire la conversione di una prenotazione singola in una prenotazione ricorrente | NiceToHave |UC17|
+| FI-27 | Il sistema deve gestire la conversione di una prenotazione ricorrente in una prenotazione singola | NiceToHave |UC19|
 
 # Requisiti non funzionali
 | ID | Requisito | Categoria | Priorità | Verifica |
@@ -503,25 +470,23 @@ Postcondizioni: Il file riflette lo stato corrente dei dati<br />
 # Matrice di tracciabilità
 |Caso d'uso| Requisiti funzionali | Requisiti non funzionali | Design | Codice | Test |
 |----------|----------------------|--------------------------|--------|--------|------|
-| UC01| FI-01, UI-23, ED-20, ED-21| NF-01, NF-04||||
-| UC02| FI-02, UI-23, ED-21| NF-01, NF-04||||
+| UC01| UI-23, ED-21, FI-01, ED-20| NF-04, NF-01||||
+| UC02| UI-23, ED-21, FI-02| NF-04, NF-01||||
 | UC03| FI-03, UI-22| NF-01||||
-| UC04| FI-04, UI-23| NF-01, NF-04||||
-| UC05| FI-05, UI-23| NF-01, NF-04||||
-| UC06| FI-06, UI-23, ED-20, ED-21| NF-01, NF-04||||
-| UC07| FI-07, UI-23, ED-21| NF-01, NF-04||||
+| UC04| UI-23, FI-04| NF-04, NF-01||||
+| UC05| UI-23, FI-05| NF-04, NF-01||||
+| UC06| UI-23, ED-21, FI-06, ED-20| NF-04, NF-01||||
+| UC07| UI-23, ED-21, FI-07| NF-04, NF-01||||
 | UC08| FI-08, UI-22| NF-01||||
-| UC09| FI-09, UI-23| NF-01, NF-04||||
-| UC10| FI-10, UI-23| NF-01, NF-04||||
-| UC11| FI-11, UI-23| NF-01, NF-04||||
-| UC12| UI-23, ED-21, FI-12| NF-01, NF-04||||
-| UC13| FI-13, UI-23, ED-21| NF-01, NF-04||||
-| UC14| UI-23, FI-15, FI-14| NF-01, NF-04||||
+| UC09| UI-23, FI-09| NF-04, NF-01||||
+| UC10| UI-23, FI-10| NF-04, NF-01||||
+| UC11| FI-11, UI-23| NF-04, NF-01||||
+| UC12| UI-23, ED-21, FI-12| NF-04, NF-01||||
+| UC13| UI-23, ED-21, FI-13| NF-04, NF-01||||
+| UC14| UI-23, FI-14, FI-15| NF-04, NF-01||||
 | UC15| UI-23, FI-16, UI-22| NF-01||||
-| UC16| FI-25| NF-01, NF-04||||
-| UC17| FI-25, FI-26| NF-01, NF-04||||
-| UC18| FI-25| NF-01, NF-04||||
-| UC19| FI-25, FI-27, UI-22| NF-01, NF-04||||
-| UC20| FI-17, UI-23, UI-22| NF-01, NF-04||||
-| UC21| ED-18, ED-19| NF-04||||
-| UC22| ED-24| NF-02, NF-06, NF-03, NF-04||||
+| UC16| FI-25| NF-04, NF-01||||
+| UC17| FI-25, FI-26| NF-04, NF-01||||
+| UC18| FI-25| NF-04, NF-01||||
+| UC19| FI-27, FI-25, UI-22| NF-04, NF-01||||
+| UC20| UI-23, UI-22, FI-17| NF-04, NF-01||||
