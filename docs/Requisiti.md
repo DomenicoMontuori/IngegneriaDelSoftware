@@ -290,11 +290,11 @@ Flusso di eventi:<br />
 Flussi alternativi:<br />
 - 1a. Campi inseriti non validi in UC12 o UC13
     - Visualizza un messaggio di errore
-    - [Errore: uuid non trovato]
+    - L'esecuzione riprende dal passo UC12.2
 - 3a. Il sistema rileva delle sovrapposizioni
     - Visualizza un messaggio di errore elencando le date in conflitto
     - Non effettua la creazione della serie di eventi
-    - [Errore: uuid non trovato]
+    - L'esecuzione riprende dal passo UC12.2
 
 Postcondizioni: La prenotazione ricorrente è stata creata.<br />
 ### UC14 - Visualizzare le prenotazioni
@@ -507,23 +507,23 @@ Postcondizioni: Nessuna<br />
 # Matrice di tracciabilità
 |Caso d'uso| Requisiti funzionali | Requisiti non funzionali | Design | Codice | Test |
 |----------|----------------------|--------------------------|--------|--------|------|
-| UC01| ED-21, UI-23, FI-01, ED-20| NF-04, NF-01||||
-| UC02| ED-21, UI-23, FI-02| NF-04, NF-01||||
-| UC03| UI-22, FI-03| NF-01||||
-| UC04| FI-04, UI-23| NF-04, NF-01||||
-| UC05| UI-23, FI-05| NF-04, NF-01||||
-| UC06| ED-21, UI-23, FI-06, ED-20| NF-04, NF-01||||
-| UC07| ED-21, UI-23, FI-07| NF-04, NF-01||||
-| UC08| UI-22, FI-08| NF-01||||
-| UC09| UI-23, FI-09| NF-04, NF-01||||
-| UC10| UI-23, FI-10| NF-04, NF-01||||
-| UC11| FI-11, UI-23| NF-04, NF-01||||
-| UC12| FI-12, ED-21, UI-23| NF-04, NF-01||||
-| UC13| ED-21, UI-23, FI-13| NF-04, NF-01||||
-| UC14| FI-15, UI-23, FI-14| NF-04, NF-01||||
-| UC15| FI-16, UI-22, UI-23| NF-01||||
-| UC16| FI-25| NF-04, NF-01||||
-| UC17| FI-26, FI-25| NF-04, NF-01||||
-| UC18| FI-25| NF-04, NF-01||||
-| UC19| FI-27, UI-22, FI-25| NF-04, NF-01||||
-| UC20| FI-17, UI-22, UI-23| NF-04, NF-01||||
+| UC01| ED-20, FI-01, UI-23, ED-21| NF-01, NF-04||||
+| UC02| UI-23, FI-02, ED-21| NF-01, NF-04||||
+| UC03| FI-03, UI-22| NF-01||||
+| UC04| UI-23, FI-04| NF-01, NF-04||||
+| UC05| FI-05, UI-23| NF-01, NF-04||||
+| UC06| ED-20, FI-06, UI-23, ED-21| NF-01, NF-04||||
+| UC07| FI-07, UI-23, ED-21| NF-01, NF-04||||
+| UC08| FI-08, UI-22| NF-01||||
+| UC09| FI-09, UI-23| NF-01, NF-04||||
+| UC10| FI-10, UI-23| NF-01, NF-04||||
+| UC11| FI-11, UI-23| NF-01, NF-04||||
+| UC12| UI-23, ED-21, FI-12| NF-01, NF-04||||
+| UC13| FI-13, UI-23, ED-21| NF-01, NF-04||||
+| UC14| FI-14, FI-15, UI-23| NF-01, NF-04||||
+| UC15| FI-16, UI-23, UI-22| NF-01||||
+| UC16| FI-25| NF-01, NF-04||||
+| UC17| FI-25, FI-26| NF-01, NF-04||||
+| UC18| FI-25| NF-01, NF-04||||
+| UC19| FI-27, UI-22, FI-25| NF-01, NF-04||||
+| UC20| FI-17, UI-23, UI-22| NF-01, NF-04||||

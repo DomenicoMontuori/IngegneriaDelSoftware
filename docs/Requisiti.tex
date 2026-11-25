@@ -445,13 +445,13 @@ Il sistema è un'applicazione desktop dotata di un'interfaccia grafica che non p
 \item[1a.] Campi inseriti non validi in UC12 o UC13
 \begin{itemize}
 \item Visualizza un messaggio di errore
-\item [Errore: uuid non trovato]
+\item L'esecuzione riprende dal passo UC12.2
 \end{itemize}
 \item[3a.] Il sistema rileva delle sovrapposizioni
 \begin{itemize}
 \item Visualizza un messaggio di errore elencando le date in conflitto
 \item Non effettua la creazione della serie di eventi
-\item [Errore: uuid non trovato]
+\item L'esecuzione riprende dal passo UC12.2
 \end{itemize}
 \end{itemize}
 \noindent\textbf{Postcondizioni:} La prenotazione ricorrente è stata creata.\par
@@ -786,26 +786,26 @@ BF-4 & Modifica di una prenotazione & SHOULD-HAVE \\
 \bottomrule
 \endlastfoot
 
-\rowcolor{gray!10}\mbox{UC01} & \mbox{ED-21}, \mbox{ED-20}, \mbox{FI-01}, \mbox{UI-23} & \mbox{NF-01}, \mbox{NF-04} & & & \\
-\rowcolor{white}\mbox{UC02} & \mbox{FI-02}, \mbox{ED-21}, \mbox{UI-23} & \mbox{NF-01}, \mbox{NF-04} & & & \\
+\rowcolor{gray!10}\mbox{UC01} & \mbox{UI-23}, \mbox{ED-21}, \mbox{ED-20}, \mbox{FI-01} & \mbox{NF-04}, \mbox{NF-01} & & & \\
+\rowcolor{white}\mbox{UC02} & \mbox{UI-23}, \mbox{ED-21}, \mbox{FI-02} & \mbox{NF-04}, \mbox{NF-01} & & & \\
 \rowcolor{gray!10}\mbox{UC03} & \mbox{UI-22}, \mbox{FI-03} & \mbox{NF-01} & & & \\
-\rowcolor{white}\mbox{UC04} & \mbox{FI-04}, \mbox{UI-23} & \mbox{NF-01}, \mbox{NF-04} & & & \\
-\rowcolor{gray!10}\mbox{UC05} & \mbox{UI-23}, \mbox{FI-05} & \mbox{NF-01}, \mbox{NF-04} & & & \\
-\rowcolor{white}\mbox{UC06} & \mbox{ED-21}, \mbox{ED-20}, \mbox{UI-23}, \mbox{FI-06} & \mbox{NF-01}, \mbox{NF-04} & & & \\
-\rowcolor{gray!10}\mbox{UC07} & \mbox{ED-21}, \mbox{UI-23}, \mbox{FI-07} & \mbox{NF-01}, \mbox{NF-04} & & & \\
+\rowcolor{white}\mbox{UC04} & \mbox{UI-23}, \mbox{FI-04} & \mbox{NF-04}, \mbox{NF-01} & & & \\
+\rowcolor{gray!10}\mbox{UC05} & \mbox{UI-23}, \mbox{FI-05} & \mbox{NF-04}, \mbox{NF-01} & & & \\
+\rowcolor{white}\mbox{UC06} & \mbox{UI-23}, \mbox{FI-06}, \mbox{ED-21}, \mbox{ED-20} & \mbox{NF-04}, \mbox{NF-01} & & & \\
+\rowcolor{gray!10}\mbox{UC07} & \mbox{UI-23}, \mbox{ED-21}, \mbox{FI-07} & \mbox{NF-04}, \mbox{NF-01} & & & \\
 \rowcolor{white}\mbox{UC08} & \mbox{UI-22}, \mbox{FI-08} & \mbox{NF-01} & & & \\
-\rowcolor{gray!10}\mbox{UC09} & \mbox{UI-23}, \mbox{FI-09} & \mbox{NF-01}, \mbox{NF-04} & & & \\
-\rowcolor{white}\mbox{UC10} & \mbox{UI-23}, \mbox{FI-10} & \mbox{NF-01}, \mbox{NF-04} & & & \\
-\rowcolor{gray!10}\mbox{UC11} & \mbox{FI-11}, \mbox{UI-23} & \mbox{NF-01}, \mbox{NF-04} & & & \\
-\rowcolor{white}\mbox{UC12} & \mbox{ED-21}, \mbox{UI-23}, \mbox{FI-12} & \mbox{NF-01}, \mbox{NF-04} & & & \\
-\rowcolor{gray!10}\mbox{UC13} & \mbox{ED-21}, \mbox{UI-23}, \mbox{FI-13} & \mbox{NF-01}, \mbox{NF-04} & & & \\
-\rowcolor{white}\mbox{UC14} & \mbox{UI-23}, \mbox{FI-14}, \mbox{FI-15} & \mbox{NF-01}, \mbox{NF-04} & & & \\
-\rowcolor{gray!10}\mbox{UC15} & \mbox{FI-16}, \mbox{UI-22}, \mbox{UI-23} & \mbox{NF-01} & & & \\
-\rowcolor{white}\mbox{UC16} & \mbox{FI-25} & \mbox{NF-01}, \mbox{NF-04} & & & \\
-\rowcolor{gray!10}\mbox{UC17} & \mbox{FI-25}, \mbox{FI-26} & \mbox{NF-01}, \mbox{NF-04} & & & \\
-\rowcolor{white}\mbox{UC18} & \mbox{FI-25} & \mbox{NF-01}, \mbox{NF-04} & & & \\
-\rowcolor{gray!10}\mbox{UC19} & \mbox{FI-27}, \mbox{UI-22}, \mbox{FI-25} & \mbox{NF-01}, \mbox{NF-04} & & & \\
-\rowcolor{white}\mbox{UC20} & \mbox{UI-22}, \mbox{FI-17}, \mbox{UI-23} & \mbox{NF-01}, \mbox{NF-04} & & & \\
+\rowcolor{gray!10}\mbox{UC09} & \mbox{UI-23}, \mbox{FI-09} & \mbox{NF-04}, \mbox{NF-01} & & & \\
+\rowcolor{white}\mbox{UC10} & \mbox{UI-23}, \mbox{FI-10} & \mbox{NF-04}, \mbox{NF-01} & & & \\
+\rowcolor{gray!10}\mbox{UC11} & \mbox{UI-23}, \mbox{FI-11} & \mbox{NF-04}, \mbox{NF-01} & & & \\
+\rowcolor{white}\mbox{UC12} & \mbox{FI-12}, \mbox{UI-23}, \mbox{ED-21} & \mbox{NF-04}, \mbox{NF-01} & & & \\
+\rowcolor{gray!10}\mbox{UC13} & \mbox{UI-23}, \mbox{ED-21}, \mbox{FI-13} & \mbox{NF-04}, \mbox{NF-01} & & & \\
+\rowcolor{white}\mbox{UC14} & \mbox{UI-23}, \mbox{FI-15}, \mbox{FI-14} & \mbox{NF-04}, \mbox{NF-01} & & & \\
+\rowcolor{gray!10}\mbox{UC15} & \mbox{UI-22}, \mbox{UI-23}, \mbox{FI-16} & \mbox{NF-01} & & & \\
+\rowcolor{white}\mbox{UC16} & \mbox{FI-25} & \mbox{NF-04}, \mbox{NF-01} & & & \\
+\rowcolor{gray!10}\mbox{UC17} & \mbox{FI-25}, \mbox{FI-26} & \mbox{NF-04}, \mbox{NF-01} & & & \\
+\rowcolor{white}\mbox{UC18} & \mbox{FI-25} & \mbox{NF-04}, \mbox{NF-01} & & & \\
+\rowcolor{gray!10}\mbox{UC19} & \mbox{UI-22}, \mbox{FI-25}, \mbox{FI-27} & \mbox{NF-04}, \mbox{NF-01} & & & \\
+\rowcolor{white}\mbox{UC20} & \mbox{UI-22}, \mbox{UI-23}, \mbox{FI-17} & \mbox{NF-04}, \mbox{NF-01} & & & \\
 \end{longtable}
 }
 
