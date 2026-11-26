@@ -453,12 +453,15 @@ Postcondizioni: Sono state eliminate le occorrenze con data successiva o uguale 
 
 
 # Business flow
-| ID   | Business flow                                                       | Priorità    |
-| ---- | ------------------------------------------------------------------- | ----------- |
-| BF-1 | Inserimento, modifica o eliminazione dei dati relativi a un'aula    | MUST-HAVE   |
-| BF-2 | Inserimento, modifica o eliminazione dei dati relativi a un docente | MUST-HAVE   |
-| BF-3 | Inserimento o eliminazione dei dati relativi a una prenotazione     | MUST-HAVE   |
-| BF-4 | Modifica di una prenotazione                                        | SHOULD-HAVE |
+
+| ID | Business flow | Casi d'uso coinvolti | Priorità |
+|----|---------------|----------------------|----------|
+| BF-1 | Gestione delle aule: l'operatore consulta o cerca un'aula e può inserirla, modificarla o cancellarla. | UC01–UC05 | MUST-HAVE |
+| BF-2 | Gestione dei docenti: l'operatore consulta o cerca un docente e può inserirlo, modificarlo o cancellarlo. | UC06–UC10 | MUST-HAVE |
+| BF-3 | Creazione di una prenotazione: l'operatore può cercare le aule disponibili e inserisce una prenotazione singola o ricorrente; il sistema verifica le sovrapposizioni. | UC11–UC13 | MUST-HAVE |
+| BF-4 | Consultazione e cancellazione delle prenotazioni: l'operatore visualizza e filtra le prenotazioni, poi può cancellare una singola occorrenza o le prenotazioni future di una serie. | UC14, UC15, UC20 | MUST-HAVE |
+| BF-5 | Modifica di una prenotazione: l'operatore seleziona una prenotazione singola o ricorrente e ne modifica le informazioni. | UC14, UC16, UC18 | SHOULD-HAVE |
+| BF-6 | Conversione della ricorrenza: l'operatore modifica una prenotazione singola rendendola ricorrente oppure converte una prenotazione ricorrente in singola. | UC14, UC17, UC19 | NICE TO HAVE |
 
 # Requisiti funzionali
 | ID | Requisito | Priorità | Caso d'uso |
