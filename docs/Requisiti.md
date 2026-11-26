@@ -370,7 +370,7 @@ Flussi alternativi:<br />
 - 1b. L'operatore deseleziona 'prenotazione ricorrente'
     - Nessuna modifica effettuata da UC17
     - L'esecuzione riprende da UC16
-- 2a. Data di termine precedente alla data di inizio
+- 2a. Campi non validi
     - Visualizza un messaggio di errore
     - L'esecuzione riprende dal passo 1
 - 4a. Il sistema rileva delle sovrapposizioni
@@ -406,10 +406,10 @@ Flussi alternativi:<br />
     - Se possibile, il sistema avvisa e chiede conferma: se l'operatore conferma si procede con la creazione degli eventi, se annulla l'esecuzione riprende dal passo 3.
     - Se non è possibile, il sistema avvisa e l'operazione viene annullata, l'esecuzione riprende dal passo 3.
 
-Postcondizioni: Nessuna<br />
+Postcondizioni: La prenotazione ricorrente è stata modificata<br />
 ### UC19 - Modificare la prenotazione da ricorrente a singola
 Attore: Operatore<br />
-Precondizioni: L'archivio è stato caricato. Esiste almeno una prenotazione ricorrente. L'operatore sta modificando una prenotazione ricorrente.<br />
+Precondizioni: L'archivio è stato caricato. Esiste almeno una prenotazione ricorrente. L'operatore sta modificando una prenotazione ricorrente in UC18<br />
 Flusso di eventi:<br />
 1. L'operatore deseleziona 'prenotazione ricorrente'. 
 2. Il sistema verifica se esistono prenotazioni successive, in tal caso le mostra e avvisa che saranno eliminate. 
@@ -423,12 +423,12 @@ Flussi alternativi:<br />
     - Visualizza un messaggio di errore
     - L'esecuzione riprende dal passo 1
 - 1b. L'operatore seleziona 'prenotazione ricorrente'
-    - Nessuna modifica effettuata da questo caso d'uso.
+    - Nessuna modifica effettuata da UC19
     - L'esecuzione riprende da UC18
 - 3a. L'operatore annulla
     - L'esecuzione riprende dal passo UC18.1
 
-Postcondizioni: Nessuna<br />
+Postcondizioni: La prenotazione è stata modificata da ricorrente a singola.<br />
 ### UC20 - Cancellare tutte le prenotazioni future di una serie
 Attore: Operatore<br />
 Precondizioni: L'archivio è stato caricato. Esiste una prenotazione appartenente a una serie ricorrente.<br />
@@ -449,7 +449,7 @@ Flussi alternativi:<br />
 - 6a. L'operatore annulla
     - L'esecuzione riprende dal passo 1
 
-Postcondizioni: Nessuna<br />
+Postcondizioni: Sono state eliminate le occorrenze con data successiva o uguale alla data dell'occorrenza selezionata<br />
 
 
 # Business flow
@@ -480,11 +480,11 @@ Postcondizioni: Nessuna<br />
 | FI-15 | Il sistema deve permettere di filtrare le prenotazioni per aula o per docente | NiceToHave |UC14|
 | FI-16 | Il sistema deve consentire di cancellare una singola prenotazione | ShouldHave |UC15|
 | FI-17 | Il sistema deve consentire di cancellare tutte le prenotazioni future di una serie ricorrente | ShouldHave |UC20|
-| ED-18 | Il sistema non deve ammettere due prenotazioni sovrapposte per la stessa aula | MustHave ||
-| ED-19 | Il sistema non deve ammettere due prenotazioni sovrapposte per lo stesso docente | MustHave ||
+| ED-18 | Il sistema non deve ammettere due prenotazioni sovrapposte per la stessa aula | MustHave |UC12, UC13, UC17|
+| ED-19 | Il sistema non deve ammettere due prenotazioni sovrapposte per lo stesso docente | MustHave |UC12, UC13, UC17|
 | ED-20 | Il sistema deve garantire l'unicità del codice aula e dell'e-mail docente | MustHave |UC01, UC06|
 | ED-21 | Il sistema deve validare la correttezza dei dati in ingresso | ShouldHave |UC01, UC02, UC06, UC07, UC12, UC13|
-| UI-22 | Il sistema deve chiedere conferma prima di ogni cancellazione | NiceToHave |UC03, UC08, UC15, UC19, UC20|
+| UI-22 | Il sistema deve chiedere conferma prima di ogni cancellazione | NiceToHave |UC03, UC08, UC15, UC18, UC19, UC20|
 | UI-23 | Il sistema deve mostrare messaggi di errore comprensibili qualora il sistema necessiti di segnalare un errore | NiceToHave |UC01, UC02, UC04, UC05, UC06, UC07, UC09, UC10, UC11, UC12, UC13, UC14, UC15, UC20|
 | ED-24 | Il sistema deve caricare l'archivio da file all'avvio e salvarlo dopo ogni modifica | MustHave ||
 | FI-25 | Il sistema deve consentire la modifica delle informazioni di una prenotazione | ShouldHave |UC16, UC17, UC18, UC19|
@@ -507,23 +507,23 @@ Postcondizioni: Nessuna<br />
 # Matrice di tracciabilità
 |Caso d'uso| Requisiti funzionali | Requisiti non funzionali | Design | Codice | Test |
 |----------|----------------------|--------------------------|--------|--------|------|
-| UC01| ED-20, FI-01, UI-23, ED-21| NF-01, NF-04||||
-| UC02| UI-23, FI-02, ED-21| NF-01, NF-04||||
-| UC03| FI-03, UI-22| NF-01||||
-| UC04| UI-23, FI-04| NF-01, NF-04||||
-| UC05| FI-05, UI-23| NF-01, NF-04||||
-| UC06| ED-20, FI-06, UI-23, ED-21| NF-01, NF-04||||
-| UC07| FI-07, UI-23, ED-21| NF-01, NF-04||||
-| UC08| FI-08, UI-22| NF-01||||
-| UC09| FI-09, UI-23| NF-01, NF-04||||
-| UC10| FI-10, UI-23| NF-01, NF-04||||
-| UC11| FI-11, UI-23| NF-01, NF-04||||
-| UC12| UI-23, ED-21, FI-12| NF-01, NF-04||||
-| UC13| FI-13, UI-23, ED-21| NF-01, NF-04||||
-| UC14| FI-14, FI-15, UI-23| NF-01, NF-04||||
-| UC15| FI-16, UI-23, UI-22| NF-01||||
-| UC16| FI-25| NF-01, NF-04||||
-| UC17| FI-25, FI-26| NF-01, NF-04||||
-| UC18| FI-25| NF-01, NF-04||||
-| UC19| FI-27, UI-22, FI-25| NF-01, NF-04||||
-| UC20| FI-17, UI-23, UI-22| NF-01, NF-04||||
+| UC01| UI-23, ED-20, FI-01, ED-21| NF-04, NF-01||||
+| UC02| UI-23, FI-02, ED-21| NF-04, NF-01||||
+| UC03| UI-22, FI-03| NF-01||||
+| UC04| UI-23, FI-04| NF-04, NF-01||||
+| UC05| UI-23, FI-05| NF-04, NF-01||||
+| UC06| UI-23, ED-20, FI-06, ED-21| NF-04, NF-01||||
+| UC07| UI-23, FI-07, ED-21| NF-04, NF-01||||
+| UC08| UI-22, FI-08| NF-01||||
+| UC09| UI-23, FI-09| NF-04, NF-01||||
+| UC10| UI-23, FI-10| NF-04, NF-01||||
+| UC11| FI-11, UI-23| NF-04, NF-01||||
+| UC12| FI-12, ED-18, UI-23, ED-19, ED-21| NF-04, NF-01||||
+| UC13| ED-18, UI-23, ED-19, FI-13, ED-21| NF-04, NF-01||||
+| UC14| UI-23, FI-15, FI-14| NF-04, NF-01||||
+| UC15| UI-22, FI-16, UI-23| NF-01||||
+| UC16| FI-25| NF-04, NF-01||||
+| UC17| ED-18, ED-19, FI-25, FI-26| NF-04, NF-01||||
+| UC18| UI-22, FI-25| NF-04, NF-01||||
+| UC19| UI-22, FI-27, FI-25| NF-04, NF-01||||
+| UC20| UI-22, FI-17, UI-23| NF-04, NF-01||||

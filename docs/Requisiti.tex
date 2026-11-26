@@ -555,7 +555,7 @@ Il sistema è un'applicazione desktop dotata di un'interfaccia grafica che non p
 \item Nessuna modifica effettuata da UC17
 \item L'esecuzione riprende da UC16
 \end{itemize}
-\item[2a.] Data di termine precedente alla data di inizio
+\item[2a.] Campi non validi
 \begin{itemize}
 \item Visualizza un messaggio di errore
 \item L'esecuzione riprende dal passo 1
@@ -604,7 +604,7 @@ Il sistema è un'applicazione desktop dotata di un'interfaccia grafica che non p
 \item Se non è possibile, il sistema avvisa e l'operazione viene annullata, l'esecuzione riprende dal passo 3.
 \end{itemize}
 \end{itemize}
-\noindent\textbf{Postcondizioni:} Nessuna\par
+\noindent\textbf{Postcondizioni:} La prenotazione ricorrente è stata modificata\par
 \end{ucbox}
 \end{samepage}
 \begin{samepage}
@@ -612,7 +612,7 @@ Il sistema è un'applicazione desktop dotata di un'interfaccia grafica che non p
 \begin{ucbox}
 
 \noindent\textbf{Attore:} Operatore\par
-\noindent\textbf{Precondizioni:} L'archivio è stato caricato. Esiste almeno una prenotazione ricorrente. L'operatore sta modificando una prenotazione ricorrente.\par
+\noindent\textbf{Precondizioni:} L'archivio è stato caricato. Esiste almeno una prenotazione ricorrente. L'operatore sta modificando una prenotazione ricorrente in UC18\par
 
 \noindent\textbf{Flusso di eventi:}
 \begin{enumerate}
@@ -626,7 +626,7 @@ Il sistema è un'applicazione desktop dotata di un'interfaccia grafica che non p
 \end{itemize}
 \item[1b.] L'operatore seleziona 'prenotazione ricorrente'
 \begin{itemize}
-\item Nessuna modifica effettuata da questo caso d'uso.
+\item Nessuna modifica effettuata da UC19
 \item L'esecuzione riprende da UC18
 \end{itemize}
 \item[3a.] L'operatore annulla
@@ -634,7 +634,7 @@ Il sistema è un'applicazione desktop dotata di un'interfaccia grafica che non p
 \item L'esecuzione riprende dal passo UC18.1
 \end{itemize}
 \end{itemize}
-\noindent\textbf{Postcondizioni:} Nessuna\par
+\noindent\textbf{Postcondizioni:} La prenotazione è stata modificata da ricorrente a singola.\par
 \end{ucbox}
 \end{samepage}
 \begin{samepage}
@@ -659,7 +659,7 @@ Il sistema è un'applicazione desktop dotata di un'interfaccia grafica che non p
 \item L'esecuzione riprende dal passo 1
 \end{itemize}
 \end{itemize}
-\noindent\textbf{Postcondizioni:} Nessuna\par
+\noindent\textbf{Postcondizioni:} Sono state eliminate le occorrenze con data successiva o uguale alla data dell'occorrenza selezionata\par
 \end{ucbox}
 \end{samepage}
 
@@ -717,11 +717,11 @@ BF-4 & Modifica di una prenotazione & SHOULD-HAVE \\
 \rowcolor{gray!10}FI-15 & Il sistema deve permettere di filtrare le prenotazioni per aula o per docente & NiceToHave &\mbox{UC14} \\
 \rowcolor{white}FI-16 & Il sistema deve consentire di cancellare una singola prenotazione & ShouldHave &\mbox{UC15} \\
 \rowcolor{gray!10}FI-17 & Il sistema deve consentire di cancellare tutte le prenotazioni future di una serie ricorrente & ShouldHave &\mbox{UC20} \\
-\rowcolor{white}ED-18 & Il sistema non deve ammettere due prenotazioni sovrapposte per la stessa aula & MustHave & \\
-\rowcolor{gray!10}ED-19 & Il sistema non deve ammettere due prenotazioni sovrapposte per lo stesso docente & MustHave & \\
+\rowcolor{white}ED-18 & Il sistema non deve ammettere due prenotazioni sovrapposte per la stessa aula & MustHave &\mbox{UC12}, \mbox{UC13}, \mbox{UC17} \\
+\rowcolor{gray!10}ED-19 & Il sistema non deve ammettere due prenotazioni sovrapposte per lo stesso docente & MustHave &\mbox{UC12}, \mbox{UC13}, \mbox{UC17} \\
 \rowcolor{white}ED-20 & Il sistema deve garantire l'unicità del codice aula e dell'e-mail docente & MustHave &\mbox{UC01}, \mbox{UC06} \\
 \rowcolor{gray!10}ED-21 & Il sistema deve validare la correttezza dei dati in ingresso & ShouldHave &\mbox{UC01}, \mbox{UC02}, \mbox{UC06}, \mbox{UC07}, \mbox{UC12}, \mbox{UC13} \\
-\rowcolor{white}UI-22 & Il sistema deve chiedere conferma prima di ogni cancellazione & NiceToHave &\mbox{UC03}, \mbox{UC08}, \mbox{UC15}, \mbox{UC19}, \mbox{UC20} \\
+\rowcolor{white}UI-22 & Il sistema deve chiedere conferma prima di ogni cancellazione & NiceToHave &\mbox{UC03}, \mbox{UC08}, \mbox{UC15}, \mbox{UC18}, \mbox{UC19}, \mbox{UC20} \\
 \rowcolor{gray!10}UI-23 & Il sistema deve mostrare messaggi di errore comprensibili qualora il sistema necessiti di segnalare un errore & NiceToHave &\mbox{UC01}, \mbox{UC02}, \mbox{UC04}, \mbox{UC05}, \mbox{UC06}, \mbox{UC07}, \mbox{UC09}, \mbox{UC10}, \mbox{UC11}, \mbox{UC12}, \mbox{UC13}, \mbox{UC14}, \mbox{UC15}, \mbox{UC20} \\
 \rowcolor{white}ED-24 & Il sistema deve caricare l'archivio da file all'avvio e salvarlo dopo ogni modifica & MustHave & \\
 \rowcolor{gray!10}FI-25 & Il sistema deve consentire la modifica delle informazioni di una prenotazione & ShouldHave &\mbox{UC16}, \mbox{UC17}, \mbox{UC18}, \mbox{UC19} \\
@@ -786,26 +786,26 @@ BF-4 & Modifica di una prenotazione & SHOULD-HAVE \\
 \bottomrule
 \endlastfoot
 
-\rowcolor{gray!10}\mbox{UC01} & \mbox{UI-23}, \mbox{ED-21}, \mbox{ED-20}, \mbox{FI-01} & \mbox{NF-04}, \mbox{NF-01} & & & \\
-\rowcolor{white}\mbox{UC02} & \mbox{UI-23}, \mbox{ED-21}, \mbox{FI-02} & \mbox{NF-04}, \mbox{NF-01} & & & \\
-\rowcolor{gray!10}\mbox{UC03} & \mbox{UI-22}, \mbox{FI-03} & \mbox{NF-01} & & & \\
-\rowcolor{white}\mbox{UC04} & \mbox{UI-23}, \mbox{FI-04} & \mbox{NF-04}, \mbox{NF-01} & & & \\
-\rowcolor{gray!10}\mbox{UC05} & \mbox{UI-23}, \mbox{FI-05} & \mbox{NF-04}, \mbox{NF-01} & & & \\
-\rowcolor{white}\mbox{UC06} & \mbox{UI-23}, \mbox{FI-06}, \mbox{ED-21}, \mbox{ED-20} & \mbox{NF-04}, \mbox{NF-01} & & & \\
-\rowcolor{gray!10}\mbox{UC07} & \mbox{UI-23}, \mbox{ED-21}, \mbox{FI-07} & \mbox{NF-04}, \mbox{NF-01} & & & \\
-\rowcolor{white}\mbox{UC08} & \mbox{UI-22}, \mbox{FI-08} & \mbox{NF-01} & & & \\
-\rowcolor{gray!10}\mbox{UC09} & \mbox{UI-23}, \mbox{FI-09} & \mbox{NF-04}, \mbox{NF-01} & & & \\
-\rowcolor{white}\mbox{UC10} & \mbox{UI-23}, \mbox{FI-10} & \mbox{NF-04}, \mbox{NF-01} & & & \\
-\rowcolor{gray!10}\mbox{UC11} & \mbox{UI-23}, \mbox{FI-11} & \mbox{NF-04}, \mbox{NF-01} & & & \\
-\rowcolor{white}\mbox{UC12} & \mbox{FI-12}, \mbox{UI-23}, \mbox{ED-21} & \mbox{NF-04}, \mbox{NF-01} & & & \\
-\rowcolor{gray!10}\mbox{UC13} & \mbox{UI-23}, \mbox{ED-21}, \mbox{FI-13} & \mbox{NF-04}, \mbox{NF-01} & & & \\
-\rowcolor{white}\mbox{UC14} & \mbox{UI-23}, \mbox{FI-15}, \mbox{FI-14} & \mbox{NF-04}, \mbox{NF-01} & & & \\
-\rowcolor{gray!10}\mbox{UC15} & \mbox{UI-22}, \mbox{UI-23}, \mbox{FI-16} & \mbox{NF-01} & & & \\
-\rowcolor{white}\mbox{UC16} & \mbox{FI-25} & \mbox{NF-04}, \mbox{NF-01} & & & \\
-\rowcolor{gray!10}\mbox{UC17} & \mbox{FI-25}, \mbox{FI-26} & \mbox{NF-04}, \mbox{NF-01} & & & \\
-\rowcolor{white}\mbox{UC18} & \mbox{FI-25} & \mbox{NF-04}, \mbox{NF-01} & & & \\
-\rowcolor{gray!10}\mbox{UC19} & \mbox{UI-22}, \mbox{FI-25}, \mbox{FI-27} & \mbox{NF-04}, \mbox{NF-01} & & & \\
-\rowcolor{white}\mbox{UC20} & \mbox{UI-22}, \mbox{UI-23}, \mbox{FI-17} & \mbox{NF-04}, \mbox{NF-01} & & & \\
+\rowcolor{gray!10}\mbox{UC01} & \mbox{FI-01}, \mbox{UI-23}, \mbox{ED-20}, \mbox{ED-21} & \mbox{NF-01}, \mbox{NF-04} & & & \\
+\rowcolor{white}\mbox{UC02} & \mbox{UI-23}, \mbox{FI-02}, \mbox{ED-21} & \mbox{NF-01}, \mbox{NF-04} & & & \\
+\rowcolor{gray!10}\mbox{UC03} & \mbox{FI-03}, \mbox{UI-22} & \mbox{NF-01} & & & \\
+\rowcolor{white}\mbox{UC04} & \mbox{UI-23}, \mbox{FI-04} & \mbox{NF-01}, \mbox{NF-04} & & & \\
+\rowcolor{gray!10}\mbox{UC05} & \mbox{UI-23}, \mbox{FI-05} & \mbox{NF-01}, \mbox{NF-04} & & & \\
+\rowcolor{white}\mbox{UC06} & \mbox{UI-23}, \mbox{ED-20}, \mbox{ED-21}, \mbox{FI-06} & \mbox{NF-01}, \mbox{NF-04} & & & \\
+\rowcolor{gray!10}\mbox{UC07} & \mbox{UI-23}, \mbox{FI-07}, \mbox{ED-21} & \mbox{NF-01}, \mbox{NF-04} & & & \\
+\rowcolor{white}\mbox{UC08} & \mbox{FI-08}, \mbox{UI-22} & \mbox{NF-01} & & & \\
+\rowcolor{gray!10}\mbox{UC09} & \mbox{FI-09}, \mbox{UI-23} & \mbox{NF-01}, \mbox{NF-04} & & & \\
+\rowcolor{white}\mbox{UC10} & \mbox{FI-10}, \mbox{UI-23} & \mbox{NF-01}, \mbox{NF-04} & & & \\
+\rowcolor{gray!10}\mbox{UC11} & \mbox{FI-11}, \mbox{UI-23} & \mbox{NF-01}, \mbox{NF-04} & & & \\
+\rowcolor{white}\mbox{UC12} & \mbox{ED-18}, \mbox{UI-23}, \mbox{ED-19}, \mbox{FI-12}, \mbox{ED-21} & \mbox{NF-01}, \mbox{NF-04} & & & \\
+\rowcolor{gray!10}\mbox{UC13} & \mbox{ED-18}, \mbox{UI-23}, \mbox{ED-19}, \mbox{FI-13}, \mbox{ED-21} & \mbox{NF-01}, \mbox{NF-04} & & & \\
+\rowcolor{white}\mbox{UC14} & \mbox{UI-23}, \mbox{FI-15}, \mbox{FI-14} & \mbox{NF-01}, \mbox{NF-04} & & & \\
+\rowcolor{gray!10}\mbox{UC15} & \mbox{FI-16}, \mbox{UI-23}, \mbox{UI-22} & \mbox{NF-01} & & & \\
+\rowcolor{white}\mbox{UC16} & \mbox{FI-25} & \mbox{NF-01}, \mbox{NF-04} & & & \\
+\rowcolor{gray!10}\mbox{UC17} & \mbox{ED-18}, \mbox{ED-19}, \mbox{FI-25}, \mbox{FI-26} & \mbox{NF-01}, \mbox{NF-04} & & & \\
+\rowcolor{white}\mbox{UC18} & \mbox{FI-25}, \mbox{UI-22} & \mbox{NF-01}, \mbox{NF-04} & & & \\
+\rowcolor{gray!10}\mbox{UC19} & \mbox{FI-27}, \mbox{FI-25}, \mbox{UI-22} & \mbox{NF-01}, \mbox{NF-04} & & & \\
+\rowcolor{white}\mbox{UC20} & \mbox{UI-23}, \mbox{UI-22}, \mbox{FI-17} & \mbox{NF-01}, \mbox{NF-04} & & & \\
 \end{longtable}
 }
 
