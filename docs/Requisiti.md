@@ -15,6 +15,17 @@ Il sistema è un'applicazione desktop dotata di un'interfaccia grafica che non p
 | Prenotazione ricorrente | Prenotazione che si ripete ad intervalli settimanali fino a una data di termine. |
 
 
+# Business Flow
+| ID | Business Flow | Descrizione | Priorità | Casi d'uso coinvolti |
+|----|---------------|-------------|----------|----------------------|
+| BF-01 | Gestione delle aule | L'operatore consulta o cerca un'aula e può inserirla, modificarla o cancellarla. |UC01, UC02, UC03, UC04, UC05| MustHave |
+| BF-02 | Gestione dei docenti | L'operatore consulta o cerca un docente e può inserirlo, modificarlo o cancellarlo |UC06, UC07, UC08, UC09, UC10| MustHave |
+| BF-03 | Creazione di una prenotazione | l'operatore può cercare le aule disponibili e inserisce una prenotazione singola o ricorrente; il sistema verifica le sovrapposizioni. |UC11, UC12, UC13| MustHave |
+| BF-04 | Consultazione e cancellazione delle prenotazioni | l'operatore visualizza e filtra le prenotazioni, poi può cancellare una singola occorrenza o le prenotazioni future di una serie. |UC14, UC15, UC20| MustHave |
+| BF-05 | Modifica di una prenotazione | l'operatore seleziona una prenotazione singola o ricorrente e ne modifica le informazioni. |UC14, UC16, UC18| ShouldHave |
+| BF-06 | Conversione della ricorrenza | l'operatore modifica una prenotazione singola rendendola ricorrente oppure converte una prenotazione ricorrente in singola. |UC14, UC17, UC19| NiceToHave |
+
+
 # Casi d'uso (UC)
 
 ## 1. Gestione aula
@@ -452,16 +463,6 @@ Flussi alternativi:<br />
 Postcondizioni: Sono state eliminate le occorrenze con data successiva o uguale alla data dell'occorrenza selezionata<br />
 
 
-# Business Flow
-| ID | Requisito | Priorità | Casi d'uso coinvolti |
-|----|-----------|----------|----------------------|
-| BF-01 | Gestione delle aule: L'operatore consulta o cerca un'aula e può inserirla, modificarla o cancellarla. |UC01, UC02, UC03, UC04, UC05| MustHave |
-| BF-02 | Gestione dei docenti: L'operatore consulta o cerca un docente e può inserirlo, modificarlo o cancellarlo |UC06, UC07, UC08, UC09, UC10| MustHave |
-| BF-03 | Creazione di una prenotazione: l'operatore può cercare le aule disponibili e inserisce una prenotazione singola o ricorrente; il sistema verifica le sovrapposizioni. |UC11, UC12, UC13| MustHave |
-| BF-04 | Consultazione e cancellazione delle prenotazioni: l'operatore visualizza e filtra le prenotazioni, poi può cancellare una singola occorrenza o le prenotazioni future di una serie. |UC14, UC15, UC20| MustHave |
-| BF-05 | Modifica di una prenotazione: l'operatore seleziona una prenotazione singola o ricorrente e ne modifica le informazioni. |UC14, UC16, UC18| ShouldHave |
-| BF-06 | Conversione della ricorrenza: l'operatore modifica una prenotazione singola rendendola ricorrente oppure converte una prenotazione ricorrente in singola. |UC14, UC17, UC19| NiceToHave |
-
 
 # Requisiti funzionali
 | ID | Requisito | Priorità | Caso d'uso |
@@ -486,13 +487,21 @@ Postcondizioni: Sono state eliminate le occorrenze con data successiva o uguale 
 | ED-18 | Il sistema non deve ammettere due prenotazioni sovrapposte per la stessa aula | MustHave |UC12, UC13, UC17|
 | ED-19 | Il sistema non deve ammettere due prenotazioni sovrapposte per lo stesso docente | MustHave |UC12, UC13, UC17|
 | ED-20 | Il sistema deve garantire l'unicità del codice aula e dell'e-mail docente | MustHave |UC01, UC06|
-| ED-21 | Il sistema deve validare la correttezza dei dati in ingresso | ShouldHave |UC01, UC02, UC06, UC07, UC12, UC13|
+| ED-21 | Il sistema deve validare la correttezza dei dati in ingresso | MustHave |UC01, UC02, UC06, UC07, UC12, UC13|
 | UI-22 | Il sistema deve chiedere conferma prima di ogni cancellazione | NiceToHave |UC03, UC08, UC15, UC18, UC19, UC20|
 | UI-23 | Il sistema deve mostrare messaggi di errore comprensibili qualora il sistema necessiti di segnalare un errore | NiceToHave |UC01, UC02, UC04, UC05, UC06, UC07, UC09, UC10, UC11, UC12, UC13, UC14, UC15, UC20|
 | ED-24 | Il sistema deve caricare l'archivio da file all'avvio e salvarlo dopo ogni modifica | MustHave ||
 | FI-25 | Il sistema deve consentire la modifica delle informazioni di una prenotazione | ShouldHave |UC16, UC17, UC18, UC19|
 | FI-26 | Il sistema deve gestire la conversione di una prenotazione singola in una prenotazione ricorrente | NiceToHave |UC17|
 | FI-27 | Il sistema deve gestire la conversione di una prenotazione ricorrente in una prenotazione singola | NiceToHave |UC19|
+| ED-28 | Il sistema deve memorizza i dati dell'aula quali Codice identificativo, nome, edificio, piano e capienza | MustHave ||
+| ED-29 | Il sistema deve memorizza i dati del docente quali Email istituzionale, nome e cognome | MustHave ||
+| ED-30 | Il sistema deve memorizza i dati delle prenotazioni quali l'aula prenotata, il docente responsabile, il tipo dell'attività, la denominazione dell'attività, la data e l'ora di inizio, la data e l'ora di fine | MustHave ||
+| UI-31 | Il sistema deve essere accessibile e funzionante su dispositivi desktop | MustHave ||
+| UI-32 | L'applicazione possiede una sezione 'Home' che visualizza per il giorno e l'ora corrente il numero di aule libere e prenotate, il numero di docenti liberi e prenotati e una visualizzazione breve delle prenotazioni in corso | NiceToHave ||
+| UI-33 | L'applicazione possiede una sezione 'Aule' nella quale visualizza la lista delle aule, permette l'inserimento di una nuova aula, permette di effetuare la ricerca di un'aula, e permette la modifica e la cancellazione di un'aula selezionata | MustHave ||
+| UI-34 | L'applicazione possiede una sezione 'Docenti' nella quale visualizza la lista dei docenti, permette l'inserimento di una nuovo docente, permette di effetuare la ricerca di un docente, e permette la modifica e la cancellazione di un docente selezionata | MustHave ||
+| UI-35 | L'applicazione possiede una sezione 'Prenotazioni' nella quale visualizza la lista delle prenotazioni, permette l'inserimento di una nuova prenotazione, permette di effetuare la ricerca di una prenotazione, e permette la modifica, rimodulazione e la cancellazione di una prenotazione selezionata | MustHave ||
 
 # Requisiti non funzionali
 | ID | Requisito | Categoria | Priorità | Verifica |
@@ -502,7 +511,7 @@ Postcondizioni: Sono state eliminate le occorrenze con data successiva o uguale 
 | NF-03 | Il sistema non deve sovrascrivere il file esistente se il caricamento fallisce | MustHave | Test |
 | NF-04 | Non è necessaria alcuna preparazione tecnica per usare il programma, i messaggi di errore devono essere chiari affinché sia possibile correggere le operazioni facilmente | ShouldHave |  |
 | NF-05 | L'applicazione deve funzionare su differenti piattaforme desktop | NiceToHave |  |
-| NF-06 | L'applicazione deve funzionare senza connessione di rete o server esterni | NiceToHave |  |
+| NF-06 | L'applicazione deve funzionare senza connessione di rete o server esterni | MustHave |  |
 | NF-07 | Il codice deve essere strutturato in moduli con alta coesione e basso accoppiamento. In particolare si mira a separare interfaccia utente e logica applicativa. | ShouldHave |  |
 | NF-08 | Le interfacce dei componenti devono essere documentate con commenti di documentazioni | NiceToHave |  |
 | NF-09 | La logica applicativa deve essere coperta da test automatici | MustHave |  |
@@ -510,23 +519,23 @@ Postcondizioni: Sono state eliminate le occorrenze con data successiva o uguale 
 # Matrice di tracciabilità
 |Caso d'uso| Requisiti funzionali | Requisiti non funzionali | Design | Codice | Test |
 |----------|----------------------|--------------------------|--------|--------|------|
-| UC01| FI-01, UI-23, ED-21, ED-20| NF-04, NF-01||||
-| UC02| UI-23, FI-02, ED-21| NF-04, NF-01||||
+| UC01| UI-23, FI-01, ED-21, ED-20| NF-01, NF-04||||
+| UC02| FI-02, UI-23, ED-21| NF-01, NF-04||||
 | UC03| FI-03, UI-22| NF-01||||
-| UC04| UI-23, FI-04| NF-04, NF-01||||
-| UC05| UI-23, FI-05| NF-04, NF-01||||
-| UC06| FI-06, UI-23, ED-21, ED-20| NF-04, NF-01||||
-| UC07| UI-23, FI-07, ED-21| NF-04, NF-01||||
+| UC04| UI-23, FI-04| NF-01, NF-04||||
+| UC05| UI-23, FI-05| NF-01, NF-04||||
+| UC06| UI-23, FI-06, ED-21, ED-20| NF-01, NF-04||||
+| UC07| FI-07, UI-23, ED-21| NF-01, NF-04||||
 | UC08| FI-08, UI-22| NF-01||||
-| UC09| UI-23, FI-09| NF-04, NF-01||||
-| UC10| UI-23, FI-10| NF-04, NF-01||||
-| UC11| FI-11, UI-23| NF-04, NF-01||||
-| UC12| UI-23, FI-12, ED-18, ED-21, ED-19| NF-04, NF-01||||
-| UC13| FI-13, UI-23, ED-18, ED-21, ED-19| NF-04, NF-01||||
-| UC14| UI-23, FI-14, FI-15| NF-04, NF-01||||
-| UC15| FI-16, UI-23, UI-22| NF-01||||
-| UC16| FI-25| NF-04, NF-01||||
-| UC17| FI-26, ED-18, ED-19, FI-25| NF-04, NF-01||||
-| UC18| UI-22, FI-25| NF-04, NF-01||||
-| UC19| UI-22, FI-25, FI-27| NF-04, NF-01||||
-| UC20| UI-23, UI-22, FI-17| NF-04, NF-01||||
+| UC09| UI-23, FI-09| NF-01, NF-04||||
+| UC10| UI-23, FI-10| NF-01, NF-04||||
+| UC11| UI-23, FI-11| NF-01, NF-04||||
+| UC12| UI-23, ED-18, FI-12, ED-21, ED-19| NF-01, NF-04||||
+| UC13| UI-23, FI-13, ED-18, ED-21, ED-19| NF-01, NF-04||||
+| UC14| FI-14, FI-15, UI-23| NF-01, NF-04||||
+| UC15| UI-23, UI-22, FI-16| NF-01||||
+| UC16| FI-25| NF-01, NF-04||||
+| UC17| FI-25, ED-18, FI-26, ED-19| NF-01, NF-04||||
+| UC18| FI-25, UI-22| NF-01, NF-04||||
+| UC19| FI-27, FI-25, UI-22| NF-01, NF-04||||
+| UC20| UI-23, UI-22, FI-17| NF-01, NF-04||||
