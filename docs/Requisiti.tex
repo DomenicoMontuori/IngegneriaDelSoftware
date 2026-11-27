@@ -664,19 +664,38 @@ Il sistema è un'applicazione desktop dotata di un'interfaccia grafica che non p
 \end{samepage}
 
 
-\section{Business flow}
+\newpage
+\section*{Business Flow}
 
-\begin{longtable}{p{0.12\textwidth}p{0.63\textwidth}p{0.15\textwidth}}
+{\renewcommand{\arraystretch}{1.35}
+
+\begin{longtable}{@{}H{0.10\linewidth} P{0.46\linewidth} P{0.12\linewidth} P{0.20\linewidth}@{}}
 \toprule
-\textbf{ID} & \textbf{Business flow} & \textbf{Priorità} \\
+\textbf{ID} & \textbf{Business Flow} & \textbf{Casi d'uso coinvolti} & \textbf{Priorità} \\
+\midrule
+\endfirsthead
+
+\toprule
+\textbf{ID} & \textbf{Business Flow} & \textbf{Casi d'uso coinvolti} & \textbf{Priorità} \\
 \midrule
 \endhead
-BF-1 & Inserimento, modifica o eliminazione dei dati relativi a un'aula & MUST-HAVE \\
-BF-2 & Inserimento, modifica o eliminazione dei dati relativi a un docente & MUST-HAVE \\
-BF-3 & Inserimento o eliminazione dei dati relativi a una prenotazione & MUST-HAVE \\
-BF-4 & Modifica di una prenotazione & SHOULD-HAVE \\
+
+\midrule
+\multicolumn{4}{r}{\footnotesize\itshape continua alla pagina successiva} \\
+\endfoot
+
 \bottomrule
+\endlastfoot
+
+\rowcolor{gray!10}BF-01 & Gestione delle aule: L'operatore consulta o cerca un'aula e può inserirla, modificarla o cancellarla. &\mbox{UC01}, \mbox{UC02}, \mbox{UC03}, \mbox{UC04}, \mbox{UC05} & MustHave \\
+\rowcolor{white}BF-02 & Gestione dei docenti: L'operatore consulta o cerca un docente e può inserirlo, modificarlo o cancellarlo &\mbox{UC06}, \mbox{UC07}, \mbox{UC08}, \mbox{UC09}, \mbox{UC10} & MustHave \\
+\rowcolor{gray!10}BF-03 & Creazione di una prenotazione: l'operatore può cercare le aule disponibili e inserisce una prenotazione singola o ricorrente; il sistema verifica le sovrapposizioni. &\mbox{UC11}, \mbox{UC12}, \mbox{UC13} & MustHave \\
+\rowcolor{white}BF-04 & Consultazione e cancellazione delle prenotazioni: l'operatore visualizza e filtra le prenotazioni, poi può cancellare una singola occorrenza o le prenotazioni future di una serie. &\mbox{UC14}, \mbox{UC15}, \mbox{UC20} & MustHave \\
+\rowcolor{gray!10}BF-05 & Modifica di una prenotazione: l'operatore seleziona una prenotazione singola o ricorrente e ne modifica le informazioni. &\mbox{UC14}, \mbox{UC16}, \mbox{UC18} & ShouldHave \\
+\rowcolor{white}BF-06 & Conversione della ricorrenza: l'operatore modifica una prenotazione singola rendendola ricorrente oppure converte una prenotazione ricorrente in singola. &\mbox{UC14}, \mbox{UC17}, \mbox{UC19} & NiceToHave \\
 \end{longtable}
+}
+
 \newpage
 \section*{Requisiti funzionali}
 
@@ -786,26 +805,26 @@ BF-4 & Modifica di una prenotazione & SHOULD-HAVE \\
 \bottomrule
 \endlastfoot
 
-\rowcolor{gray!10}\mbox{UC01} & \mbox{FI-01}, \mbox{UI-23}, \mbox{ED-20}, \mbox{ED-21} & \mbox{NF-01}, \mbox{NF-04} & & & \\
-\rowcolor{white}\mbox{UC02} & \mbox{UI-23}, \mbox{FI-02}, \mbox{ED-21} & \mbox{NF-01}, \mbox{NF-04} & & & \\
-\rowcolor{gray!10}\mbox{UC03} & \mbox{FI-03}, \mbox{UI-22} & \mbox{NF-01} & & & \\
-\rowcolor{white}\mbox{UC04} & \mbox{UI-23}, \mbox{FI-04} & \mbox{NF-01}, \mbox{NF-04} & & & \\
-\rowcolor{gray!10}\mbox{UC05} & \mbox{UI-23}, \mbox{FI-05} & \mbox{NF-01}, \mbox{NF-04} & & & \\
-\rowcolor{white}\mbox{UC06} & \mbox{UI-23}, \mbox{ED-20}, \mbox{ED-21}, \mbox{FI-06} & \mbox{NF-01}, \mbox{NF-04} & & & \\
-\rowcolor{gray!10}\mbox{UC07} & \mbox{UI-23}, \mbox{FI-07}, \mbox{ED-21} & \mbox{NF-01}, \mbox{NF-04} & & & \\
-\rowcolor{white}\mbox{UC08} & \mbox{FI-08}, \mbox{UI-22} & \mbox{NF-01} & & & \\
-\rowcolor{gray!10}\mbox{UC09} & \mbox{FI-09}, \mbox{UI-23} & \mbox{NF-01}, \mbox{NF-04} & & & \\
-\rowcolor{white}\mbox{UC10} & \mbox{FI-10}, \mbox{UI-23} & \mbox{NF-01}, \mbox{NF-04} & & & \\
-\rowcolor{gray!10}\mbox{UC11} & \mbox{FI-11}, \mbox{UI-23} & \mbox{NF-01}, \mbox{NF-04} & & & \\
-\rowcolor{white}\mbox{UC12} & \mbox{ED-18}, \mbox{UI-23}, \mbox{ED-19}, \mbox{FI-12}, \mbox{ED-21} & \mbox{NF-01}, \mbox{NF-04} & & & \\
-\rowcolor{gray!10}\mbox{UC13} & \mbox{ED-18}, \mbox{UI-23}, \mbox{ED-19}, \mbox{FI-13}, \mbox{ED-21} & \mbox{NF-01}, \mbox{NF-04} & & & \\
-\rowcolor{white}\mbox{UC14} & \mbox{UI-23}, \mbox{FI-15}, \mbox{FI-14} & \mbox{NF-01}, \mbox{NF-04} & & & \\
-\rowcolor{gray!10}\mbox{UC15} & \mbox{FI-16}, \mbox{UI-23}, \mbox{UI-22} & \mbox{NF-01} & & & \\
-\rowcolor{white}\mbox{UC16} & \mbox{FI-25} & \mbox{NF-01}, \mbox{NF-04} & & & \\
-\rowcolor{gray!10}\mbox{UC17} & \mbox{ED-18}, \mbox{ED-19}, \mbox{FI-25}, \mbox{FI-26} & \mbox{NF-01}, \mbox{NF-04} & & & \\
-\rowcolor{white}\mbox{UC18} & \mbox{FI-25}, \mbox{UI-22} & \mbox{NF-01}, \mbox{NF-04} & & & \\
-\rowcolor{gray!10}\mbox{UC19} & \mbox{FI-27}, \mbox{FI-25}, \mbox{UI-22} & \mbox{NF-01}, \mbox{NF-04} & & & \\
-\rowcolor{white}\mbox{UC20} & \mbox{UI-23}, \mbox{UI-22}, \mbox{FI-17} & \mbox{NF-01}, \mbox{NF-04} & & & \\
+\rowcolor{gray!10}\mbox{UC01} & \mbox{ED-20}, \mbox{FI-01}, \mbox{ED-21}, \mbox{UI-23} & \mbox{NF-04}, \mbox{NF-01} & & & \\
+\rowcolor{white}\mbox{UC02} & \mbox{FI-02}, \mbox{ED-21}, \mbox{UI-23} & \mbox{NF-04}, \mbox{NF-01} & & & \\
+\rowcolor{gray!10}\mbox{UC03} & \mbox{UI-22}, \mbox{FI-03} & \mbox{NF-01} & & & \\
+\rowcolor{white}\mbox{UC04} & \mbox{FI-04}, \mbox{UI-23} & \mbox{NF-04}, \mbox{NF-01} & & & \\
+\rowcolor{gray!10}\mbox{UC05} & \mbox{FI-05}, \mbox{UI-23} & \mbox{NF-04}, \mbox{NF-01} & & & \\
+\rowcolor{white}\mbox{UC06} & \mbox{ED-20}, \mbox{FI-06}, \mbox{ED-21}, \mbox{UI-23} & \mbox{NF-04}, \mbox{NF-01} & & & \\
+\rowcolor{gray!10}\mbox{UC07} & \mbox{FI-07}, \mbox{ED-21}, \mbox{UI-23} & \mbox{NF-04}, \mbox{NF-01} & & & \\
+\rowcolor{white}\mbox{UC08} & \mbox{UI-22}, \mbox{FI-08} & \mbox{NF-01} & & & \\
+\rowcolor{gray!10}\mbox{UC09} & \mbox{FI-09}, \mbox{UI-23} & \mbox{NF-04}, \mbox{NF-01} & & & \\
+\rowcolor{white}\mbox{UC10} & \mbox{FI-10}, \mbox{UI-23} & \mbox{NF-04}, \mbox{NF-01} & & & \\
+\rowcolor{gray!10}\mbox{UC11} & \mbox{FI-11}, \mbox{UI-23} & \mbox{NF-04}, \mbox{NF-01} & & & \\
+\rowcolor{white}\mbox{UC12} & \mbox{ED-18}, \mbox{ED-19}, \mbox{FI-12}, \mbox{ED-21}, \mbox{UI-23} & \mbox{NF-04}, \mbox{NF-01} & & & \\
+\rowcolor{gray!10}\mbox{UC13} & \mbox{ED-18}, \mbox{ED-19}, \mbox{FI-13}, \mbox{ED-21}, \mbox{UI-23} & \mbox{NF-04}, \mbox{NF-01} & & & \\
+\rowcolor{white}\mbox{UC14} & \mbox{FI-14}, \mbox{FI-15}, \mbox{UI-23} & \mbox{NF-04}, \mbox{NF-01} & & & \\
+\rowcolor{gray!10}\mbox{UC15} & \mbox{UI-22}, \mbox{FI-16}, \mbox{UI-23} & \mbox{NF-01} & & & \\
+\rowcolor{white}\mbox{UC16} & \mbox{FI-25} & \mbox{NF-04}, \mbox{NF-01} & & & \\
+\rowcolor{gray!10}\mbox{UC17} & \mbox{ED-18}, \mbox{ED-19}, \mbox{FI-26}, \mbox{FI-25} & \mbox{NF-04}, \mbox{NF-01} & & & \\
+\rowcolor{white}\mbox{UC18} & \mbox{UI-22}, \mbox{FI-25} & \mbox{NF-04}, \mbox{NF-01} & & & \\
+\rowcolor{gray!10}\mbox{UC19} & \mbox{UI-22}, \mbox{FI-27}, \mbox{FI-25} & \mbox{NF-04}, \mbox{NF-01} & & & \\
+\rowcolor{white}\mbox{UC20} & \mbox{UI-22}, \mbox{FI-17}, \mbox{UI-23} & \mbox{NF-04}, \mbox{NF-01} & & & \\
 \end{longtable}
 }
 

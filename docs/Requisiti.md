@@ -452,16 +452,16 @@ Flussi alternativi:<br />
 Postcondizioni: Sono state eliminate le occorrenze con data successiva o uguale alla data dell'occorrenza selezionata<br />
 
 
-# Business flow
+# Business Flow
+| ID | Requisito | Priorità | Casi d'uso coinvolti |
+|----|-----------|----------|----------------------|
+| BF-01 | Gestione delle aule: L'operatore consulta o cerca un'aula e può inserirla, modificarla o cancellarla. |UC01, UC02, UC03, UC04, UC05| MustHave |
+| BF-02 | Gestione dei docenti: L'operatore consulta o cerca un docente e può inserirlo, modificarlo o cancellarlo |UC06, UC07, UC08, UC09, UC10| MustHave |
+| BF-03 | Creazione di una prenotazione: l'operatore può cercare le aule disponibili e inserisce una prenotazione singola o ricorrente; il sistema verifica le sovrapposizioni. |UC11, UC12, UC13| MustHave |
+| BF-04 | Consultazione e cancellazione delle prenotazioni: l'operatore visualizza e filtra le prenotazioni, poi può cancellare una singola occorrenza o le prenotazioni future di una serie. |UC14, UC15, UC20| MustHave |
+| BF-05 | Modifica di una prenotazione: l'operatore seleziona una prenotazione singola o ricorrente e ne modifica le informazioni. |UC14, UC16, UC18| ShouldHave |
+| BF-06 | Conversione della ricorrenza: l'operatore modifica una prenotazione singola rendendola ricorrente oppure converte una prenotazione ricorrente in singola. |UC14, UC17, UC19| NiceToHave |
 
-| ID | Business flow | Casi d'uso coinvolti | Priorità |
-|----|---------------|----------------------|----------|
-| BF-1 | Gestione delle aule: l'operatore consulta o cerca un'aula e può inserirla, modificarla o cancellarla. | UC01–UC05 | MUST-HAVE |
-| BF-2 | Gestione dei docenti: l'operatore consulta o cerca un docente e può inserirlo, modificarlo o cancellarlo. | UC06–UC10 | MUST-HAVE |
-| BF-3 | Creazione di una prenotazione: l'operatore può cercare le aule disponibili e inserisce una prenotazione singola o ricorrente; il sistema verifica le sovrapposizioni. | UC11–UC13 | MUST-HAVE |
-| BF-4 | Consultazione e cancellazione delle prenotazioni: l'operatore visualizza e filtra le prenotazioni, poi può cancellare una singola occorrenza o le prenotazioni future di una serie. | UC14, UC15, UC20 | MUST-HAVE |
-| BF-5 | Modifica di una prenotazione: l'operatore seleziona una prenotazione singola o ricorrente e ne modifica le informazioni. | UC14, UC16, UC18 | SHOULD-HAVE |
-| BF-6 | Conversione della ricorrenza: l'operatore modifica una prenotazione singola rendendola ricorrente oppure converte una prenotazione ricorrente in singola. | UC14, UC17, UC19 | NICE TO HAVE |
 
 # Requisiti funzionali
 | ID | Requisito | Priorità | Caso d'uso |
@@ -510,23 +510,23 @@ Postcondizioni: Sono state eliminate le occorrenze con data successiva o uguale 
 # Matrice di tracciabilità
 |Caso d'uso| Requisiti funzionali | Requisiti non funzionali | Design | Codice | Test |
 |----------|----------------------|--------------------------|--------|--------|------|
-| UC01| UI-23, ED-20, FI-01, ED-21| NF-04, NF-01||||
+| UC01| FI-01, UI-23, ED-21, ED-20| NF-04, NF-01||||
 | UC02| UI-23, FI-02, ED-21| NF-04, NF-01||||
-| UC03| UI-22, FI-03| NF-01||||
+| UC03| FI-03, UI-22| NF-01||||
 | UC04| UI-23, FI-04| NF-04, NF-01||||
 | UC05| UI-23, FI-05| NF-04, NF-01||||
-| UC06| UI-23, ED-20, FI-06, ED-21| NF-04, NF-01||||
+| UC06| FI-06, UI-23, ED-21, ED-20| NF-04, NF-01||||
 | UC07| UI-23, FI-07, ED-21| NF-04, NF-01||||
-| UC08| UI-22, FI-08| NF-01||||
+| UC08| FI-08, UI-22| NF-01||||
 | UC09| UI-23, FI-09| NF-04, NF-01||||
 | UC10| UI-23, FI-10| NF-04, NF-01||||
 | UC11| FI-11, UI-23| NF-04, NF-01||||
-| UC12| FI-12, ED-18, UI-23, ED-19, ED-21| NF-04, NF-01||||
-| UC13| ED-18, UI-23, ED-19, FI-13, ED-21| NF-04, NF-01||||
-| UC14| UI-23, FI-15, FI-14| NF-04, NF-01||||
-| UC15| UI-22, FI-16, UI-23| NF-01||||
+| UC12| UI-23, FI-12, ED-18, ED-21, ED-19| NF-04, NF-01||||
+| UC13| FI-13, UI-23, ED-18, ED-21, ED-19| NF-04, NF-01||||
+| UC14| UI-23, FI-14, FI-15| NF-04, NF-01||||
+| UC15| FI-16, UI-23, UI-22| NF-01||||
 | UC16| FI-25| NF-04, NF-01||||
-| UC17| ED-18, ED-19, FI-25, FI-26| NF-04, NF-01||||
+| UC17| FI-26, ED-18, ED-19, FI-25| NF-04, NF-01||||
 | UC18| UI-22, FI-25| NF-04, NF-01||||
-| UC19| UI-22, FI-27, FI-25| NF-04, NF-01||||
-| UC20| UI-22, FI-17, UI-23| NF-04, NF-01||||
+| UC19| UI-22, FI-25, FI-27| NF-04, NF-01||||
+| UC20| UI-23, UI-22, FI-17| NF-04, NF-01||||
